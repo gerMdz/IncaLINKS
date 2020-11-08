@@ -28,4 +28,10 @@ npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
 .idea
-docker
+/docker
+Makefile
+/vendor
+/var
+docker-compose.yml
+docker-compose.yml.dist
+/migrations

@@ -137,6 +137,10 @@
                 <source>action.create_post</source>
                 <target>Crear un nuevo artículo</target>
             </trans-unit>
+            <trans-unit id="action.create_enlacecorto">
+                <source>action.create_enlacecorto</source>
+                <target>Crear un nuevo enlace corto</target>
+            </trans-unit>
             <trans-unit id="label.create_post">
                 <source>label.create_post</source>
                 <target>Crear artículo</target>

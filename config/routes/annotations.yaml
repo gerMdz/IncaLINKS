@@ -1,8 +1,8 @@
 controllers:
     resource: '../../src/Controller/'
     type: annotation
-    prefix: /{_locale}
+#    prefix: /{_locale}
     requirements:
-        _locale: '%app_locales%'
+#        _locale: '%app_locales%'
     defaults:
-        _locale: '%locale%'
+#        _locale: '%locale%'

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Enlaces Cortos Listado{% endblock %}
+
+{% block body %}
+    <h1>Listado de Enlaces Cortos</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Enlace</th>
+                <th>LinkRoute</th>
+                <th scope="col" class="text-center"><i class="fa fa-cogs" aria-hidden="true"></i> {{ 'label.actions'|trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for enlace_corto in enlace_cortos %}
+            <tr>
+                <td>{{ enlace_corto.id }}</td>
+                <td>{{ enlace_corto.enlace }}</td>
+                <td>{{ enlace_corto.linkRoute }}</td>
+                <td>
+                    <a href="{{ path('enlace_corto_show', {'id': enlace_corto.id}) }}">Ver</a>
+                    <a href="{{ path('enlace_corto_edit', {'id': enlace_corto.id}) }}">Editar</a>
+                    <a href="{{ path('enlace_corto_redirect', {'id': enlace_corto.id}) }}">Redirigir</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4" align="center">{{ 'post.no_posts_found'|trans }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('enlace_corto_new') }}">
+        {{ 'action.create_enlacecorto'|trans }}
+    </a>
+{% endblock %}
