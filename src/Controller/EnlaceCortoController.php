@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class EnlaceCortoController extends AbstractController
 {
     /**
-     * @Route("/enlacecorto", name="enlace_corto_index", methods={"GET"})
+     * @Route("/enlaces", name="enlace_corto_index", methods={"GET"})
      */
     public function index(EnlaceCortoRepository $enlaceCortoRepository): Response
     {
@@ -27,7 +27,7 @@ class EnlaceCortoController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="enlace_corto_new", methods={"GET","POST"})
+     * @Route("/enlaces/new", name="enlace_corto_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -51,22 +51,19 @@ class EnlaceCortoController extends AbstractController
 
     /**
      * @Route("/{enlace}", name="enlace_corto_pagina", methods={"GET"})
-     * @param string $enlace
-     * @param EnlaceCortoRepository $repository
+     * @param EnlaceCorto $enlaceCorto
      * @return RedirectResponse
      */
 
-    public function irEnlace(string $enlace, EnlaceCortoRepository $repository)
+    public function irEnlace(EnlaceCorto $enlaceCorto)
     {
-
-        $enlaceCorto = $repository->findOneBy(['enlace'=>$enlace]);
         return $this->redirect(
             $enlaceCorto->getLinkRoute()
         );
     }
 
     /**
-     * @Route("/{id}", name="enlace_corto_show", methods={"GET"})
+     * @Route("/enlaces/{id}", name="enlace_corto_show", methods={"GET"})
      */
     public function show(EnlaceCorto $enlaceCorto): Response
     {
@@ -76,7 +73,7 @@ class EnlaceCortoController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/redirigir", name="enlace_corto_redirect", methods={"GET"})
+     * @Route("/enlaces/{id}/redirigir", name="enlace_corto_redirect", methods={"GET"})
      */
     public function redirigir(EnlaceCorto $enlaceCorto): Response
     {
@@ -88,7 +85,7 @@ class EnlaceCortoController extends AbstractController
 
 
     /**
-     * @Route("/{id}/edit", name="enlace_corto_edit", methods={"GET","POST"})
+     * @Route("/enlaces/{id}/edit", name="enlace_corto_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, EnlaceCorto $enlaceCorto): Response
     {
@@ -108,7 +105,7 @@ class EnlaceCortoController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="enlace_corto_delete", methods={"DELETE"})
+     * @Route("/enlaces/{id}", name="enlace_corto_delete", methods={"DELETE"})
      */
     public function delete(Request $request, EnlaceCorto $enlaceCorto): Response
     {

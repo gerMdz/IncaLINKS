@@ -139,7 +139,7 @@
             </trans-unit>
             <trans-unit id="action.create_enlacecorto">
                 <source>action.create_enlacecorto</source>
-                <target>Crear un nuevo enlace corto</target>
+                <target>Crea nuevo enlace corto</target>
             </trans-unit>
             <trans-unit id="label.create_post">
                 <source>label.create_post</source>
@@ -279,7 +279,9 @@
 
             <trans-unit id="help.app_description">
                 <source>help.app_description</source>
-                <target><![CDATA[Esta <strong>aplicación demo</strong> ha sido programada con el framework Symfony para mostrar la forma recomendada de programar aplicaciones Symfony.]]></target>
+                <target>
+                <![CDATA[Esta sección <strong>aplicación </strong> ha sido programada con el framework Symfony
+                y sirve para acortar direciones direccdiones web y hacerlas más fáciles de memorizar.]]></target>
             </trans-unit>
             <trans-unit id="help.show_code">
                 <source>help.show_code</source>
@@ -315,7 +317,7 @@
             </trans-unit>
             <trans-unit id="help.more_information">
                 <source>help.more_information</source>
-                <target><![CDATA[Para más información, consulta la <a href="https://symfony.com/doc">documentación de Symfony</a>.]]></target>
+                <target><![CDATA[Para más información, envía un mail al <a href="mailto:gerardo.montivero@gmail.com">Administrador</a>.]]></target>
             </trans-unit>
             <trans-unit id="action.show_post">
                 <source>action.show_post</source>
