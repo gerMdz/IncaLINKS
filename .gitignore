@@ -36,3 +36,5 @@ docker-compose.yml
 docker-compose.yml.dist
 /migrations
 /data/
+/data/database.sqlite
+/data/database_test.sqlite
