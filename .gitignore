@@ -35,3 +35,4 @@ Makefile
 docker-compose.yml
 docker-compose.yml.dist
 /migrations
+/data/
