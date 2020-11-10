@@ -12,3 +12,6 @@ homepage:
         template: default/homepage.html.twig
 #        _locale: '%locale%'
 
+login:
+    path: /login
+    controller: App\Controller\SecurityController::login

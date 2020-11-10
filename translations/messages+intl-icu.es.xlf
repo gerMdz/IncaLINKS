@@ -58,7 +58,8 @@
 
             <trans-unit id="title.homepage">
                 <source>title.homepage</source>
-                <target><![CDATA[Bienvenido/a a la aplicación <strong>Symfony Demo</strong>]]></target>
+                <target><![CDATA[
+                Bienvenido/a a la aplicación <strong>Igle.ar</strong>]]></target>
             </trans-unit>
             <trans-unit id="title.source_code">
                 <source>title.source_code</source>
@@ -289,7 +290,8 @@
             </trans-unit>
             <trans-unit id="help.browse_app">
                 <source>help.browse_app</source>
-                <target><![CDATA[Acceder a la <strong>parte pública</strong> de la aplicación de demostración.]]></target>
+                <target><![CDATA[
+                Acceder a la <strong>lista de enlaces</strong> de la aplicación.]]></target>
             </trans-unit>
             <trans-unit id="help.browse_admin">
                 <source>help.browse_admin</source>

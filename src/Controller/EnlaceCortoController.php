@@ -50,6 +50,18 @@ class EnlaceCortoController extends AbstractController
     }
 
     /**
+     * @Route("/ingreso", name="page_login", methods={"GET"})
+     * @return RedirectResponse
+     */
+
+    public function loginPage()
+    {
+        return $this->redirectToRoute(
+            'security_login'
+        );
+    }
+
+    /**
      * @Route("/{enlace}", name="enlace_corto_pagina", methods={"GET"})
      * @param EnlaceCorto $enlaceCorto
      * @return RedirectResponse

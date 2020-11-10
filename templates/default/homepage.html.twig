@@ -15,30 +15,30 @@
     </div>
 
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-12">
             <div class="jumbotron">
                 <p>
                     {{ 'help.browse_app'|trans|raw }}
                 </p>
                 <p>
-                    <a class="btn btn-primary btn-lg" href="{{ path('blog_index') }}">
+                    <a class="btn btn-primary btn-lg" href="{{ path('enlace_corto_index') }}">
                         <i class="fa fa-users" aria-hidden="true"></i> {{ 'action.browse_app'|trans }}
                     </a>
                 </p>
             </div>
         </div>
 
-        <div class="col-sm-6">
-            <div class="jumbotron">
-                <p>
-                    {{ 'help.browse_admin'|trans|raw }}
-                </p>
-                <p>
-                    <a class="btn btn-primary btn-lg" href="{{ path('admin_index') }}">
-                        <i class="fa fa-lock" aria-hidden="true"></i> {{ 'action.browse_admin'|trans }}
-                    </a>
-                </p>
-            </div>
-        </div>
+{#        <div class="col-sm-6">#}
+{#            <div class="jumbotron">#}
+{#                <p>#}
+{#                    {{ 'help.browse_admin'|trans|raw }}#}
+{#                </p>#}
+{#                <p>#}
+{#                    <a class="btn btn-primary btn-lg" href="{{ path('admin_index') }}">#}
+{#                        <i class="fa fa-lock" aria-hidden="true"></i> {{ 'action.browse_admin'|trans }}#}
+{#                    </a>#}
+{#                </p>#}
+{#            </div>#}
+{#        </div>#}
     </div>
 {% endblock %}
