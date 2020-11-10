@@ -26,10 +26,12 @@
                         <a href="{{ path('enlace_corto_redirect', {id: enlace_corto.id}) }}" class="btn btn-sm btn-default">
                             <i class="fa fa-eye" aria-hidden="true"></i> Redirigir
                         </a>
+                        {% if(is_granted('ROLE_ADMIN')) %}
 
                         <a href="{{ path('enlace_corto_edit', {id: enlace_corto.id}) }}" class="btn btn-sm btn-primary">
                             <i class="fa fa-edit" aria-hidden="true"></i> {{ 'action.edit'|trans }}
                         </a>
+                        {% endif %}
                     </div>
                 </td>
             </tr>
@@ -46,11 +48,13 @@
 {#    </a>#}
 {% endblock %}
 {% block sidebar %}
+    {%  if (is_granted('ROLE_ADMIN')) %}
     <div class="section actions">
         <a href="{{ path('enlace_corto_new') }}" class="btn btn-lg btn-block btn-success">
             <i class="fa fa-plus" aria-hidden="true"></i> {{ 'action.create_enlacecorto'|trans }}
         </a>
     </div>
+    {% endif %}
 
     {{ parent() }}
 
