@@ -281,7 +281,7 @@
                 <source>help.app_description</source>
                 <target>
                 <![CDATA[Esta  <strong>sección </strong> ha sido programada con el framework Symfony
-                y sirve para acortar direciones direccdiones web y hacerlas más fáciles de memorizar.]]></target>
+                y sirve para acortar direciones web y hacerlas más fáciles de memorizar.]]></target>
             </trans-unit>
             <trans-unit id="help.show_code">
                 <source>help.show_code</source>
