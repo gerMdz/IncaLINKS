@@ -20,7 +20,14 @@
         {% for enlace_corto in enlace_cortos %}
             <tr>
                 {# <td>{{ enlace_corto.id }}</td> #}
-                <td>{{ enlace_corto.enlace }}</td>
+                <td><span class="span-copy"
+                          title="Copiar enlace corto"
+                          data-fai="fai{{ enlace_corto.id }}"
+                          data-reference="{{ url('homepage') }}{{ enlace_corto.enlace }}">
+                        <i id="fai{{ enlace_corto.id }}" class="fas fa-clipboard"> </i>
+                    </span>
+                    {{ url('homepage') }}{{ enlace_corto.enlace }}
+                </td>
                 <td>{{ enlace_corto.linkRoute }}</td>
                 <td class="text-center">
                     <div class="item-actions">
@@ -59,6 +66,17 @@
     {% endif %}
 
     {{ parent() }}
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('app') }}
+    {{ encore_entry_script_tags('clipboard') }}
+    <script>
+
+    </script>
 
 
 {% endblock %}

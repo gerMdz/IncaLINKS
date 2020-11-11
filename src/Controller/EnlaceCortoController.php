@@ -18,6 +18,8 @@ class EnlaceCortoController extends AbstractController
 {
     /**
      * @Route("/enlaces", name="enlace_corto_index", methods={"GET"})
+     * @param EnlaceCortoRepository $enlaceCortoRepository
+     * @return Response
      */
     public function index(EnlaceCortoRepository $enlaceCortoRepository): Response
     {
