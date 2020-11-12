@@ -3,17 +3,19 @@
     "@fortawesome/fontawesome-free": "^5.8.1",
     "@symfony/webpack-encore": "^0.31.0",
     "bloodhound-js": "^1.2.3",
+    "bootstrap": "^4.5.3",
     "bootstrap-sass": "^3.3.7",
     "bootstrap-tagsinput": "^0.7.1",
     "bootswatch": "^3.3.7",
+    "bs-custom-file-input": "^1.3.4",
     "core-js": "^3.0.0",
     "eonasdan-bootstrap-datetimepicker": "^4.17.47",
     "highlight.js": "^9.12.0",
     "imports-loader": "^0.8.0",
     "jquery": "^3.5.1",
     "lato-font": "^3.0.0",
-    "node-sass": "^4.9.3",
-    "sass-loader": "^7.1.0",
+    "popper.js": "^1.16.1",
+    "sass-loader": "10.0.5",
     "typeahead.js": "^0.11.1"
   },
   "license": "MIT",
@@ -23,5 +25,8 @@
     "dev": "encore dev",
     "watch": "encore dev --watch",
     "build": "encore production --progress"
+  },
+  "dependencies": {
+    "node-sass": "^4.14.1"
   }
 }

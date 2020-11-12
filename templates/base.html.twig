@@ -8,7 +8,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <title>{% block title %}Igle .AR Apps{% endblock %}</title>
+        <title>{% block title %}{{ app.request.host }}{% endblock %}</title>
         <link rel="alternate" type="application/rss+xml" title="{{ 'rss.title'|trans }}" href="{{ path('blog_rss') }}">
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
@@ -26,7 +26,7 @@
                     <div class="container">
                         <div class="navbar-header col-md-3 col-lg-2">
                             <a class="navbar-brand" href="{{ path('homepage') }}">
-                                Igle.ar
+                                {{ app.request.host }}
                             </a>
 
                             <button type="button" class="navbar-toggle"
@@ -130,20 +130,20 @@
                 <div class="container">
                     <div class="row">
                         <div id="footer-copyright" class="col-md-6">
-                            <p>&copy; {{ 'now'|date('Y') }} - The Symfony Project</p>
+                            <p>&copy; {{ 'now'|date('Y') }} - Igle .AR</p>
                             <p>{{ 'mit_license'|trans }}</p>
                         </div>
                         <div id="footer-resources" class="col-md-6">
                             <p>
-                                <a href="https://twitter.com/symfony" title="Symfony Twitter">
-                                    <i class="fa fa-twitter" aria-hidden="true"></i>
-                                </a>
-                                <a href="https://www.facebook.com/SensioLabs" title="SensioLabs Facebook">
-                                    <i class="fa fa-facebook" aria-hidden="true"></i>
-                                </a>
-                                <a href="https://symfony.com/blog/" title="Symfony Blog">
-                                    <i class="fa fa-rss" aria-hidden="true"></i>
-                                </a>
+{#                                <a href="https://twitter.com/symfony" title="Symfony Twitter">#}
+{#                                    <i class="fa fa-twitter" aria-hidden="true"></i>#}
+{#                                </a>#}
+{#                                <a href="https://www.facebook.com/IglesiaAlameda" title="SensioLabs Facebook">#}
+{#                                    <i class="fa fa-facebook" aria-hidden="true"></i>#}
+{#                                </a>#}
+{#                                <a href="https://symfony.com/blog/" title="Symfony Blog">#}
+{#                                    <i class="fa fa-rss" aria-hidden="true"></i>#}
+{#                                </a>#}
                             </p>
                         </div>
                     </div>

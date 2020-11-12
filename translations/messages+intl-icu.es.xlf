@@ -59,7 +59,7 @@
             <trans-unit id="title.homepage">
                 <source>title.homepage</source>
                 <target><![CDATA[
-                Bienvenido/a a la aplicación <strong>Igle.ar</strong>]]></target>
+                Bienvenido/a a ]]></target>
             </trans-unit>
             <trans-unit id="title.source_code">
                 <source>title.source_code</source>
