@@ -39,3 +39,4 @@ docker-compose.yml.dist
 /data/database.sqlite
 /data/database_test.sqlite
 /public/favicon/
+/sqls/
