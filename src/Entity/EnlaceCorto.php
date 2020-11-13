@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\EnlaceCortoRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass=EnlaceCortoRepository::class)
@@ -18,7 +19,8 @@ class EnlaceCorto
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=150, unique=true, nullable=true)
+     * @Gedmo\Slug(fields={"enlace"})
      */
     private $enlace;
 
