@@ -71,6 +71,8 @@ $ ./bin/phpunit
 - [Bootstrap](https://getbootstrap.com/) plantillas.
 - [FontAwesome](https://fortawesome.github.io/Font-Awesome/) icons.
 
+Con licencia [MIT](https://github.com/gerMdz/incalinks/blob/main/LICENCE)
+
 
 [1]: https://symfony.com
 [2]: https://symfony.com/doc/current/reference/requirements.html
