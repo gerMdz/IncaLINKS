@@ -1,60 +1,78 @@
-Symfony Demo Application
-========================
+## Bienvenido a IncaLINKS
 
-The "Symfony Demo Application" is a reference application created to show how
-to develop applications following the [Symfony Best Practices][1].
+Los enlaces dinámicos de IncaLINKS permiten crear accesos cortos y recordables fácilmente
+para tu website.
 
-Requirements
-------------
 
-  * PHP 7.2.9 or higher;
-  * PDO-SQLite PHP extension enabled;
-  * and the [usual Symfony application requirements][2].
+### ¿Que resuelve?
 
-Installation
-------------
+Muchas veces se usan servicios de terceros que nos dan un enlace algo complicado de recordar
+por ejemplo:
+```
+"f536cbfa-cd6d-4515-a9f3-9ba4dffeae22", "ChIJgUbEo8cfqokR5lP9_Wh_DaM" o "01F36TGT0GC0Q8W7T18B3Q51P3"
+```
+Con IncaLinks crea tus propios enlaces que serán más fáciles de recordar como:
+```
+"viernesDeNavidad"
+"formularioCampamento"
+"audioUltimoDomingo"
+```
+### ¿Qué más tiene?
 
-[Download Symfony][4] to install the `symfony` binary on your computer and run
-this command:
+Tiene un manejo básico de usuarios para la administración de los enlaces.
 
-```bash
-$ symfony new --demo my_project
+### ¿Cómo lo obtengo?
+
+Para usar IncaLINKS debes bajarlo de github, y luego bajar sus dependencias de paquetes.
+
+```
+git clone https://github.com/gerMdz/incalinks.git
+cd project
+composer install
+yarn install 
 ```
 
-Alternatively, you can use Composer:
 
-```bash
-$ composer create-project symfony/symfony-demo my_project
-```
+Requerimientos
+------------
 
-Usage
+* PHP 7.2.9 o superior;
+* PDO-SQLite PHP extension enabled (o el PDO para tu base de datos);
+* y los [usuales requerimientos de una aplicación Symfony][2].
+
+Uso
 -----
 
-There's no need to configure anything to run the application. If you have
-[installed Symfony][4] binary, run this command:
+No es necesario configurar nada para ejecutar la aplicación. Si usted tiene instalado
+el binario de [Symfony][4], ejecute el siguiente comando:
 
 ```bash
-$ cd my_project/
-$ symfony serve
+$ symfony serve -d
 ```
 
-Then access the application in your browser at the given URL (<https://localhost:8000> by default).
+Luego acceda a la aplicación en su navegador con la URL dada (<https://localhost:8000> generalmente).
 
-If you don't have the Symfony binary installed, run `php -S localhost:8000 -t public/`
-to use the built-in PHP web server or [configure a web server][3] like Nginx or
-Apache to run the application.
+Si no tiene instalado el binario de Symfony, ejecute `php -S localhost:8000 -t public/`
+para utilizar el servidor web PHP incorporado o [configure un servidor web][3] como Nginx o
+Apache para ejecutar la aplicación.
 
 Tests
 -----
 
-Execute this command to run tests:
+Ejecute este comando para correr los tests:
 
 ```bash
-$ cd my_project/
 $ ./bin/phpunit
 ```
 
-[1]: https://symfony.com/doc/current/best_practices.html
+
+#### IncaLINKS se base en
+- [Symfony][1] framework PHP.
+- [Bootstrap](https://getbootstrap.com/) plantillas.
+- [FontAwesome](https://fortawesome.github.io/Font-Awesome/) icons.
+
+
+[1]: https://symfony.com
 [2]: https://symfony.com/doc/current/reference/requirements.html
 [3]: https://symfony.com/doc/current/cookbook/configuration/web_server_configuration.html
 [4]: https://symfony.com/download

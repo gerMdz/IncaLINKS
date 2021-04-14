@@ -1,37 +1,78 @@
 ## Bienvenido a IncaLINKS
 
-You can use the [editor on GitHub](https://github.com/gerMdz/incalinks/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
+Los enlaces dinámicos de IncaLINKS permiten crear accesos cortos y recordables fácilmente
+para tu website.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+### ¿Que resuelve?
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Muchas veces se usan servicios de terceros que nos dan un enlace algo complicado de recordar
+por ejemplo: 
+```
+"f536cbfa-cd6d-4515-a9f3-9ba4dffeae22", "ChIJgUbEo8cfqokR5lP9_Wh_DaM" o "01F36TGT0GC0Q8W7T18B3Q51P3"
+```
+Con IncaLinks crea tus propios enlaces que serán más fáciles de recordar como:
+```
+"viernesDeNavidad"
+"formularioCampamento"
+"audioUltimoDomingo"
+```
+### ¿Qué más tiene?
 
-```markdown
-Syntax highlighted code block
+Tiene un manejo básico de usuarios para la administración de los enlaces.
 
-# Header 1
-## Header 2
-### Header 3
+### ¿Cómo lo obtengo?
 
-- Bulleted
-- List
+Para usar IncaLINKS debes bajarlo de github, y luego bajar sus dependencias de paquetes. 
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```
+git clone https://github.com/gerMdz/incalinks.git
+cd project
+composer install
+yarn install 
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
-### Jekyll Themes
+Requerimientos
+------------
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/gerMdz/incalinks/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+* PHP 7.2.9 o superior;
+* PDO-SQLite PHP extension enabled (o el PDO para tu base de datos);
+* y los [usuales requerimientos de una aplicación Symfony][2].
 
-### Support or Contact
+Uso
+-----
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+No es necesario configurar nada para ejecutar la aplicación. Si usted tiene instalado
+el binario de [Symfony][4], ejecute el siguiente comando:
+
+```bash
+$ symfony serve -d
+```
+
+Luego acceda a la aplicación en su navegador con la URL dada (<https://localhost:8000> generalmente).
+
+Si no tiene instalado el binario de Symfony, ejecute `php -S localhost:8000 -t public/`
+para utilizar el servidor web PHP incorporado o [configure un servidor web][3] como Nginx o
+Apache para ejecutar la aplicación.
+
+Tests
+-----
+
+Ejecute este comando para correr los tests:
+
+```bash
+$ ./bin/phpunit
+```
+
+
+#### IncaLINKS se base en
+- [Symfony][1] framework PHP.
+- [Bootstrap](https://getbootstrap.com/) plantillas.
+- [FontAwesome](https://fortawesome.github.io/Font-Awesome/) icons.
+
+
+[1]: https://symfony.com
+[2]: https://symfony.com/doc/current/reference/requirements.html
+[3]: https://symfony.com/doc/current/cookbook/configuration/web_server_configuration.html
+[4]: https://symfony.com/download
