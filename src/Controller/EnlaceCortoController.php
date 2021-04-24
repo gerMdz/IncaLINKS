@@ -56,7 +56,7 @@ class EnlaceCortoController extends AbstractController
      * @return RedirectResponse
      */
 
-    public function loginPage()
+    public function loginPage(): RedirectResponse
     {
         return $this->redirectToRoute(
             'security_login'
@@ -69,7 +69,7 @@ class EnlaceCortoController extends AbstractController
      * @return RedirectResponse
      */
 
-    public function irEnlace(EnlaceCorto $enlaceCorto)
+    public function irEnlace(EnlaceCorto $enlaceCorto): RedirectResponse
     {
         return $this->redirect(
             $enlaceCorto->getLinkRoute()
