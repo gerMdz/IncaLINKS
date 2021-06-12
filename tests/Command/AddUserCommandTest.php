@@ -92,7 +92,7 @@ class AddUserCommandTest extends KernelTestCase
     {
         $container = self::$container;
 
-        /** @var \App\Entity\User $user */
+        /** @var \App\Entity\UserOld $user */
         $user = $container->get(UserRepository::class)->findOneByEmail($this->userData['email']);
         $this->assertNotNull($user);
 
