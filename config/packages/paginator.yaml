@@ -1,0 +1,15 @@
+# config/packages/paginator.yaml
+knp_paginator:
+  page_range: 20                       # número de enlaces mostrados en el menú de paginación (por ejemplo: tiene 10 páginas, un rango de páginas de 3, en la quinta página verá enlaces a la página 4, 5, 6)
+  default_options:
+    page_name: page                 # nombre del parámetro de consulta de la página
+    sort_field_name: sort           # nombre del parámetro de consulta del campo de clasificación
+    sort_direction_name: direction  # dirección de clasificación nombre del parámetro de consulta
+    distinct: true                  # Asegurar resultados distintos, útil cuando las consultas ORM utilizan declaraciones GROUP BY
+    filter_field_name: filterField  # nombre del parámetro de consulta del campo de filtro
+    filter_value_name: filterValue  # nombre de parámetro de consulta de valor de filtro
+  template:
+#    pagination: '@KnpPaginator/Pagination/sliding.html.twig'     # plantilla de controles de paginación deslizante
+    pagination: '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig'     # plantilla de controles de paginación deslizante
+    sortable: '@KnpPaginator/Pagination/sortable_link.html.twig' # ordenar plantilla de enlace
+    filtration: '@KnpPaginator/Pagination/filtration.html.twig'  # plantilla de filtros

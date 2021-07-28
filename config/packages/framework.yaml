@@ -9,8 +9,6 @@ framework:
     session:
 #        handler_id: null
         handler_id: session.handler.native_file
-
-
         cookie_secure: auto
         cookie_samesite: lax
 

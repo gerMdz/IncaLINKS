@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\EnlaceCorto;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -19,22 +20,14 @@ class EnlaceCortoRepository extends ServiceEntityRepository
         parent::__construct($registry, EnlaceCorto::class);
     }
 
-    // /**
-    //  * @return EnlaceCorto[] Returns an array of EnlaceCorto objects
-    //  */
-    /*
-    public function findByExampleField($value)
+
+    public function findAllEnlaces(): QueryBuilder
     {
         return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('e.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+            ->orderBy('e.linkRoute', 'ASC')
         ;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?EnlaceCorto

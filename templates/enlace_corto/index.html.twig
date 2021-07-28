@@ -5,6 +5,9 @@
 
 {% block main %}
     <h1>Listado de enlaces cortos</h1>
+    <div class="navigation">
+        {{ knp_pagination_render(enlace_cortos) }}
+    </div>
 
     <table class="table table-striped table-middle-aligned">
         <thead>
@@ -51,6 +54,9 @@
         {% endfor %}
         </tbody>
     </table>
+    <div class="navigation">
+        {{ knp_pagination_render(enlace_cortos) }}
+    </div>
 
     {# <a href="{{ path('enlace_corto_new') }}"> #}
     {# {{ 'action.create_enlacecorto'|trans }} #}
