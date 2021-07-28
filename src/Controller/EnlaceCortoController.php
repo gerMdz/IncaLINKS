@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\EnlaceCorto;
 use App\Form\EnlaceCortoType;
 use App\Repository\EnlaceCortoRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,12 +20,25 @@ class EnlaceCortoController extends AbstractController
     /**
      * @Route("/enlaces", name="enlace_corto_index", methods={"GET"})
      * @param EnlaceCortoRepository $enlaceCortoRepository
+     * @param PaginatorInterface $paginator
+     * @param Request $request
      * @return Response
      */
-    public function index(EnlaceCortoRepository $enlaceCortoRepository): Response
+    public function index(EnlaceCortoRepository $enlaceCortoRepository, PaginatorInterface $paginator, Request $request): Response
     {
+        $enlaces_cortos_query = $enlaceCortoRepository->findAllEnlaces();
+
+        $enlaces_cortos = $paginator->paginate(
+        // Consulta Doctrine, no resultados
+            $enlaces_cortos_query,
+            // Definir el parámetro de la página
+            $request->query->getInt('page', 1),
+            // Items per page
+            15
+        );
+
         return $this->render('enlace_corto/index.html.twig', [
-            'enlace_cortos' => $enlaceCortoRepository->findAll(),
+            'enlace_cortos' => $enlaces_cortos,
         ]);
     }
 
@@ -56,7 +70,7 @@ class EnlaceCortoController extends AbstractController
      * @return RedirectResponse
      */
 
-    public function loginPage()
+    public function loginPage(): RedirectResponse
     {
         return $this->redirectToRoute(
             'security_login'
@@ -69,7 +83,7 @@ class EnlaceCortoController extends AbstractController
      * @return RedirectResponse
      */
 
-    public function irEnlace(EnlaceCorto $enlaceCorto)
+    public function irEnlace(EnlaceCorto $enlaceCorto): RedirectResponse
     {
         return $this->redirect(
             $enlaceCorto->getLinkRoute()

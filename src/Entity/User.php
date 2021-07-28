@@ -12,6 +12,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Serializable;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -28,7 +30,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @author Ryan Weaver <weaverryan@gmail.com>
  * @author Javier Eguiluz <javier.eguiluz@gmail.com>
  */
-class User implements UserInterface, \Serializable
+class User implements UserInterface, PasswordAuthenticatedUserInterface, Serializable
 {
     /**
      * @var int
@@ -59,7 +61,7 @@ class User implements UserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(type="string", unique=true)
+     * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\Email()
      */
     private $email;
@@ -108,20 +110,30 @@ class User implements UserInterface, \Serializable
         return $this->email;
     }
 
-    public function setEmail(string $email): void
+    /**
+     * @param string $email
+     * @return $this
+     */
+    public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
     }
 
-    public function getPassword(): ?string
+
+
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUserIdentifier(): string
     {
-        return $this->password;
+        return $this->username;
     }
 
-    public function setPassword(string $password): void
-    {
-        $this->password = $password;
-    }
+
 
     /**
      * Returns the roles or permissions granted to the user for security.
@@ -138,11 +150,32 @@ class User implements UserInterface, \Serializable
         return array_unique($roles);
     }
 
-    public function setRoles(array $roles): void
+    /**
+     * @param array $roles
+     * @return $this
+     */
+    public function setRoles(array $roles): self
     {
         $this->roles = $roles;
+
+        return $this;
     }
 
+
+    /**
+     * @see PasswordAuthenticatedUserInterface
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
     /**
      * Returns the salt that was originally used to encode the password.
      *
@@ -180,9 +213,9 @@ class User implements UserInterface, \Serializable
     /**
      * {@inheritdoc}
      */
-    public function unserialize($serialized): void
+    public function unserialize($data): void
     {
         // add $this->salt too if you don't use Bcrypt or Argon2i
-        [$this->id, $this->username, $this->password] = unserialize($serialized, ['allowed_classes' => false]);
+        [$this->id, $this->username, $this->password] = unserialize($data, ['allowed_classes' => false]);
     }
 }
