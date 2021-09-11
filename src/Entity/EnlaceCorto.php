@@ -8,6 +8,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass=EnlaceCortoRepository::class)
+ * @ORM\Table(name="inca_enlace_corto")
  */
 class EnlaceCorto
 {

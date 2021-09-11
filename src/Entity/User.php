@@ -19,12 +19,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @ORM\Table(name="symfony_demo_user")
+ * @ORM\Table(name="inca_user")
  *
  * Defines the properties of the User entity to represent the application users.
  * See https://symfony.com/doc/current/doctrine.html#creating-an-entity-class
  *
- * Tip: if you have an existing database, you can generate these entity class automatically.
+ * Tip: if you have an existing database, you can generate these entities class automatically.
  * See https://symfony.com/doc/current/doctrine/reverse_engineering.html
  *
  * @author Ryan Weaver <weaverryan@gmail.com>
@@ -184,7 +184,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
     public function getSalt(): ?string
     {
         // We're using bcrypt in security.yaml to encode the password, so
-        // the salt value is built-in and and you don't have to generate one
+        // the salt value is built-in, and you don't have to generate one
         // See https://en.wikipedia.org/wiki/Bcrypt
 
         return null;

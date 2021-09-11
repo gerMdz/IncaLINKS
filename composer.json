@@ -41,7 +41,8 @@
         "symfony/yaml": "^5.1",
         "tgalopin/html-sanitizer-bundle": "^1.2",
         "twig/intl-extra": "^3.0",
-        "twig/markdown-extra": "^3.0"
+        "twig/markdown-extra": "^3.0",
+        "ext-json": "*"
     },
     "require-dev": {
         "dama/doctrine-test-bundle": "^6.2",
