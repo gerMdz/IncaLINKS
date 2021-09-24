@@ -30,6 +30,16 @@ class EnlaceCorto
      */
     private $linkRoute;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Organization::class, inversedBy="enlaces")
+     */
+    private $owner;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isActive;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -55,6 +65,30 @@ class EnlaceCorto
     public function setLinkRoute(string $linkRoute): self
     {
         $this->linkRoute = $linkRoute;
+
+        return $this;
+    }
+
+    public function getOwner(): ?Organization
+    {
+        return $this->owner;
+    }
+
+    public function setOwner(?Organization $owner): self
+    {
+        $this->owner = $owner;
+
+        return $this;
+    }
+
+    public function getIsActive(): ?bool
+    {
+        return $this->isActive;
+    }
+
+    public function setIsActive(bool $isActive): self
+    {
+        $this->isActive = $isActive;
 
         return $this;
     }

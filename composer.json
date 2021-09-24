@@ -11,6 +11,7 @@
     },
     "require": {
         "php": "^7.2.9",
+        "ext-json": "*",
         "ext-pdo_sqlite": "*",
         "composer/package-versions-deprecated": "^1.8",
         "doctrine/doctrine-bundle": "^1.12|^2.0",
@@ -36,13 +37,13 @@
         "symfony/string": "^5.1",
         "symfony/translation": "^5.1",
         "symfony/twig-pack": "^1.0",
+        "symfony/uid": "5.3.*",
         "symfony/validator": "^5.1",
         "symfony/webpack-encore-bundle": "^1.4",
         "symfony/yaml": "^5.1",
         "tgalopin/html-sanitizer-bundle": "^1.2",
         "twig/intl-extra": "^3.0",
-        "twig/markdown-extra": "^3.0",
-        "ext-json": "*"
+        "twig/markdown-extra": "^3.0"
     },
     "require-dev": {
         "dama/doctrine-test-bundle": "^6.2",

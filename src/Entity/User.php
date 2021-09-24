@@ -80,6 +80,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
      */
     private $roles = [];
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Organization::class, inversedBy="users")
+     */
+    private $organization;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isActive;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -217,5 +227,29 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
     {
         // add $this->salt too if you don't use Bcrypt or Argon2i
         [$this->id, $this->username, $this->password] = unserialize($data, ['allowed_classes' => false]);
+    }
+
+    public function getOrganization(): ?Organization
+    {
+        return $this->organization;
+    }
+
+    public function setOrganization(?Organization $organization): self
+    {
+        $this->organization = $organization;
+
+        return $this;
+    }
+
+    public function getIsActive(): ?bool
+    {
+        return $this->isActive;
+    }
+
+    public function setIsActive(bool $isActive): self
+    {
+        $this->isActive = $isActive;
+
+        return $this;
     }
 }
