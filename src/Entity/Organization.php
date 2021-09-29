@@ -13,6 +13,7 @@ use Symfony\Component\Uid\Uuid;
 
 /**
  * @ORM\Entity(repositoryClass=OrganizationRepository::class)
+ * @ORM\Table(name="inca_organization")
  */
 class Organization
 {

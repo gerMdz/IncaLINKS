@@ -40,6 +40,11 @@ class EnlaceCorto
      */
     private $isActive;
 
+    public function __construct()
+    {
+        $this->isActive = true;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
