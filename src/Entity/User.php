@@ -19,12 +19,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @ORM\Table(name="symfony_demo_user")
+ * @ORM\Table(name="inca_user")
  *
  * Defines the properties of the User entity to represent the application users.
  * See https://symfony.com/doc/current/doctrine.html#creating-an-entity-class
  *
- * Tip: if you have an existing database, you can generate these entity class automatically.
+ * Tip: if you have an existing database, you can generate these entities class automatically.
  * See https://symfony.com/doc/current/doctrine/reverse_engineering.html
  *
  * @author Ryan Weaver <weaverryan@gmail.com>
@@ -79,6 +79,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
      * @ORM\Column(type="json")
      */
     private $roles = [];
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Organization::class, inversedBy="users")
+     */
+    private $organization;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isActive;
 
     public function getId(): ?int
     {
@@ -184,7 +194,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
     public function getSalt(): ?string
     {
         // We're using bcrypt in security.yaml to encode the password, so
-        // the salt value is built-in and and you don't have to generate one
+        // the salt value is built-in, and you don't have to generate one
         // See https://en.wikipedia.org/wiki/Bcrypt
 
         return null;
@@ -217,5 +227,29 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
     {
         // add $this->salt too if you don't use Bcrypt or Argon2i
         [$this->id, $this->username, $this->password] = unserialize($data, ['allowed_classes' => false]);
+    }
+
+    public function getOrganization(): ?Organization
+    {
+        return $this->organization;
+    }
+
+    public function setOrganization(?Organization $organization): self
+    {
+        $this->organization = $organization;
+
+        return $this;
+    }
+
+    public function getIsActive(): ?bool
+    {
+        return $this->isActive;
+    }
+
+    public function setIsActive(bool $isActive): self
+    {
+        $this->isActive = $isActive;
+
+        return $this;
     }
 }
