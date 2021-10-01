@@ -30,6 +30,9 @@ services:
     App\Controller\:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
+    App\Action\:
+        resource: '../src/Action'
+        tags: [ 'controller.service_arguments' ]
 
     # when the service definition only contains arguments, you can omit the
     # 'arguments' key and define the arguments just below the service class
