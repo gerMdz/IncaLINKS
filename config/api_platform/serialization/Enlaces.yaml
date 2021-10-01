@@ -1,7 +1,7 @@
 App\Entity\EnlaceCorto:
   attributes:
     id:
-      groups: [enlace_read]
+      groups:
     enlace:
       groups: [enlace_read, enlace_get, enlace_create, enlace_update, movement_read]
     linkRoute:

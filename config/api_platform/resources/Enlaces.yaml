@@ -1,27 +1,43 @@
 App\Entity\EnlaceCorto:
   attributes:
     normalization_context:
-      groups: [enlace_read, enlace_get]
+      groups: [enlace_get]
   collectionOperations:
-    post:
-      method: POST
-      security: is_granted("ENLACE_CREATE")
-      denormalization_context:
-        groups: [enlace_create]
-    get:
-      method: GET
+#    post:
+#      method: POST
 #      security: is_granted("ENLACE_CREATE")
-      denormalization_context:
-        groups: [enlace_get]
+#      denormalization_context:
+#        groups: [enlace_create]
+    get_list_enlaces_cortos:
+      method: GET
+      path: /enlacescortos/list
+      controller: App\Action\EnlacesCortos\ListEnlacesCortos
+      deserialize: false
+      normalization_context:
+        groups: [ enlace_get ]
+      openapi_context:
+        summary: Lista todos los enlaces activos
+        responses:
+          200:
+            description: OK
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    enlace:
+                      type: string
+                    linkRoute:
+                      type: string
   itemOperations:
     get:
       method: GET
       security: is_granted("ENLACE_READ", object)
-    put:
-      method: PUT
-      security: is_granted("ENLACE_UPDATE", object)
-      denormalization_context:
-        groups: [enlace_update]
-    delete:
-      method: DELETE
-      security: is_granted("ENLACE_DELETE", object)
+#    put:
+#      method: PUT
+#      security: is_granted("ENLACE_UPDATE", object)
+#      denormalization_context:
+#        groups: [enlace_update]
+#    delete:
+#      method: DELETE
+#      security: is_granted("ENLACE_DELETE", object)

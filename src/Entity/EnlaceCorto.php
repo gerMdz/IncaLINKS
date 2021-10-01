@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\EnlaceCortoRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=EnlaceCortoRepository::class)
@@ -22,11 +23,13 @@ class EnlaceCorto
     /**
      * @ORM\Column(type="string", length=150, unique=true, nullable=true)
      * @Gedmo\Slug(fields={"enlace"})
+     * @Groups("enlace_get")
      */
     private $enlace;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("enlace_get")
      */
     private $linkRoute;
 

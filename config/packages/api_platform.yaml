@@ -5,12 +5,12 @@ api_platform:
         json: ['application/merge-patch+json']
     swagger:
         versions: [3]
-        api_keys:
-            apiKey:
-                name: Authorization
-                type: header
-    enable_swagger_ui: false
+#        api_keys:
+#            apiKey:
+#                name: Authorization
+#                type: header
+    enable_swagger_ui: true
     enable_re_doc: true
-    title: Symfony API Platform
+    title: IncaLinks API
     version: 1.0
     show_webby: false
