@@ -27,7 +27,7 @@ Encore
     .addEntry('clipboard', './assets/js/clipboard.js')
     .splitEntryChunks()
     .enableSingleRuntimeChunk()
-    .enableIntegrityHashes(Encore.isProduction())
+    // .enableIntegrityHashes(Encore.isProduction())
     .configureBabel(null, {
         useBuiltIns: 'usage',
         corejs: 3,
