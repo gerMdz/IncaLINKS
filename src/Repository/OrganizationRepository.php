@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Organization;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -47,4 +48,10 @@ class OrganizationRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findAllOrganizations(): QueryBuilder
+    {
+        return $this->createQueryBuilder('o')
+            ->orderBy('o.name', 'ASC')
+            ;
+    }
 }

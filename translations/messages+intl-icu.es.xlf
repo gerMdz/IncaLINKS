@@ -142,6 +142,10 @@
                 <source>action.create_enlacecorto</source>
                 <target>Crea nuevo enlace corto</target>
             </trans-unit>
+            <trans-unit id="action.create_organization">
+                <source>action.create_organizartion</source>
+                <target>Crea nueva organización</target>
+            </trans-unit>
             <trans-unit id="label.create_post">
                 <source>label.create_post</source>
                 <target>Crear artículo</target>
@@ -153,6 +157,10 @@
             <trans-unit id="action.back_to_list">
                 <source>action.back_to_list</source>
                 <target>Volver al listado de artículos</target>
+            </trans-unit>
+            <trans-unit id="action.back_to_list_generic">
+                <source>action.back_to_list_generic</source>
+                <target>Volver al listado</target>
             </trans-unit>
             <trans-unit id="action.publish_comment">
                 <source>action.publish_comment</source>
@@ -190,6 +198,14 @@
             <trans-unit id="label.username">
                 <source>label.username</source>
                 <target>Nombre de usuario</target>
+            </trans-unit>
+            <trans-unit id="label.name">
+                <source>label.name</source>
+                <target>Nombre de la organización</target>
+            </trans-unit>
+            <trans-unit id="label.address">
+                <source>label.address</source>
+                <target>Dirección de la organización</target>
             </trans-unit>
             <trans-unit id="label.password">
                 <source>label.password</source>
@@ -284,6 +300,12 @@
                 <![CDATA[Esta  <strong>sección </strong> ha sido programada con el framework Symfony
                 y sirve para acortar direciones web y hacerlas más fáciles de memorizar.]]></target>
             </trans-unit>
+            <trans-unit id="help.app_organization">
+                <source>help.app_organization</source>
+                <target>
+                <![CDATA[Esta  <strong>sección </strong> ha sido programada con el framework Symfony
+                y sirve para el manejo administrativo de las organizaciones.]]></target>
+            </trans-unit>
             <trans-unit id="help.show_code">
                 <source>help.show_code</source>
                 <target><![CDATA[Pulsa este botón para ver el código fuente del <strong>controlador</strong> y de la <strong>plantilla</strong> utilizados para crear esta página.]]></target>
@@ -377,6 +399,18 @@
             <trans-unit id="paginator.next">
                 <source>paginator.next</source>
                 <target>Siguiente</target>
+            </trans-unit>
+            <trans-unit id="title.organization_identifier">
+                <source>title.organization_identifier</source>
+                <target>Identificador</target>
+            </trans-unit>
+            <trans-unit id="label.active">
+                <source>label.active</source>
+                <target>¿Activo?</target>
+            </trans-unit>
+            <trans-unit id="title.organization_new">
+                <source>title.organization_new</source>
+                <target>Nueva Organización</target>
             </trans-unit>
         </body>
     </file>

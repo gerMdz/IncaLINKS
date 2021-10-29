@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Organization{% endblock %}
+
+{% block body %}
+    <h1>Organization</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ organization.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ organization.name }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ organization.address }}</td>
+            </tr>
+            <tr>
+                <th>Identifier</th>
+                <td>{{ organization.identifier }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ organization.createdAt ? organization.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ organization.updatedAt ? organization.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Responsable</th>
+                <td>{{ organization.responsable }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ organization.email }}</td>
+            </tr>
+            <tr>
+                <th>IsActive</th>
+                <td>{{ organization.isActive ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('organization_index') }}">back to list</a>
+
+    <a href="{{ path('organization_edit', {'id': organization.id}) }}">edit</a>
+
+    {{ include('organization/_delete_form.html.twig') }}
+{% endblock %}

@@ -19,7 +19,6 @@ class Organization
 {
     /**
      * @ORM\Id
-     * @ORM\GeneratedValue
      * @ORM\Column(type="string")
      */
     private $id;
@@ -77,7 +76,7 @@ class Organization
     public function __construct()
     {
         $this->id = Uuid::v4()->toRfc4122();
-        $this->createdAt = new DateTime();
+        $this->createdAt = new DateTimeImmutable();
         $this->markAsUpdated();
         $this->isActive = true;
         $this->enlaces = new ArrayCollection();
@@ -125,7 +124,7 @@ class Organization
         return $this;
     }
 
-    public function getCreatedAt(): DateTime
+    public function getCreatedAt(): DateTimeImmutable
     {
         return $this->createdAt;
     }
