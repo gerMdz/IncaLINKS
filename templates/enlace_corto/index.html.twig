@@ -63,13 +63,21 @@
     {# </a> #}
 {% endblock %}
 {% block sidebar %}
-    {% if (is_granted('ROLE_ADMIN')) %}
+
         <div class="section actions">
+    {% if (is_granted('ROLE_USER')) %}
             <a href="{{ path('enlace_corto_new') }}" class="btn btn-lg btn-block btn-success">
                 <i class="fa fa-plus" aria-hidden="true"></i> {{ 'action.create_enlacecorto'|trans }}
             </a>
-        </div>
+{% endif %}
+    {% if (is_granted('ROLE_ADMIN')) %}
+            <a href="{{ path('organization_index') }}" class="btn btn-lg btn-block btn-success">
+                <i class="fa fa-list" aria-hidden="true"></i> {{ 'action.list_organization'|trans }}
+            </a>
     {% endif %}
+
+        </div>
+
 
     {{ parent() }}
 

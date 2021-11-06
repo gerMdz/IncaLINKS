@@ -56,7 +56,10 @@
     {% if (is_granted('ROLE_ADMIN')) %}
         <div class="section actions">
             <a href="{{ path('organization_new') }}" class="btn btn-lg btn-block btn-success">
-                <i class="fa fa-plus" aria-hidden="true"></i> {{ 'action.create_organizartion'|trans }}
+                <i class="fa fa-plus" aria-hidden="true"></i> {{ 'action.create_organization'|trans }}
+            </a>
+            <a href="{{ path('enlace_corto_index') }}" class="btn btn-lg btn-block btn-success">
+                <i class="fa fa-list" aria-hidden="true"></i> {{ 'action.list_enlacecorto'|trans }}
             </a>
         </div>
     {% endif %}

@@ -6,6 +6,7 @@ use App\Repository\EnlaceCortoRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Uid\Uuid;
 
 /**
  * @ORM\Entity(repositoryClass=EnlaceCortoRepository::class)
@@ -15,8 +16,7 @@ class EnlaceCorto
 {
     /**
      * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     private $id;
 
@@ -45,10 +45,11 @@ class EnlaceCorto
 
     public function __construct()
     {
+        $this->id = Uuid::v4()->toRfc4122();
         $this->isActive = true;
     }
 
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
     }

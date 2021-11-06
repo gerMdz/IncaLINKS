@@ -15,6 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Serializable;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Uid\Uuid;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -36,8 +37,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
      * @var int
      *
      * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     private $id;
 
@@ -90,7 +90,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
      */
     private $isActive;
 
-    public function getId(): ?int
+    public function __construct()
+    {
+        $this->id = Uuid::v4()->toRfc4122();
+        $this->isActive = true;
+    }
+
+    public function getId(): ?string
     {
         return $this->id;
     }

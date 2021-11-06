@@ -94,6 +94,14 @@
                 <target>Se ha producido un error al publicar tu comentario</target>
             </trans-unit>
 
+            <trans-unit id="action.change_password">
+                <source>action.change_password</source>
+                <target>Cambiar contraseña</target>
+            </trans-unit>
+            <trans-unit id="user.updated_successfully">
+                <source>user.updated_successfully</source>
+                <target>Los cambios fueron realizados con éxito</target>
+            </trans-unit>
             <trans-unit id="action.show">
                 <source>action.show</source>
                 <target>Ver</target>
@@ -142,9 +150,17 @@
                 <source>action.create_enlacecorto</source>
                 <target>Crea nuevo enlace corto</target>
             </trans-unit>
+            <trans-unit id="action.list_enlacecorto">
+                <source>action.list_enlacecorto</source>
+                <target>Listar enlaces cortos</target>
+            </trans-unit>
             <trans-unit id="action.create_organization">
-                <source>action.create_organizartion</source>
+                <source>action.create_organization</source>
                 <target>Crea nueva organización</target>
+            </trans-unit>
+            <trans-unit id="action.list_organization">
+                <source>action.list_organization</source>
+                <target>Listado de organizaciones</target>
             </trans-unit>
             <trans-unit id="label.create_post">
                 <source>label.create_post</source>
@@ -239,6 +255,10 @@
                 <source>title.post_new</source>
                 <target>Nuevo artículo</target>
             </trans-unit>
+            <trans-unit id="title.edit_user">
+                <source>title.edit_user</source>
+                <target>Edición de usuarios</target>
+            </trans-unit>
             <trans-unit id="action.edit_contents">
                 <source>action.edit_contents</source>
                 <target>Editar contenidos</target>
@@ -298,7 +318,7 @@
                 <source>help.app_description</source>
                 <target>
                 <![CDATA[Esta  <strong>sección </strong> ha sido programada con el framework Symfony
-                y sirve para acortar direciones web y hacerlas más fáciles de memorizar.]]></target>
+                y sirve para acortar direcciones web y hacerlas más fáciles de memorizar.]]></target>
             </trans-unit>
             <trans-unit id="help.app_organization">
                 <source>help.app_organization</source>
@@ -358,6 +378,14 @@
             <trans-unit id="post.created_successfully">
                 <source>post.created_successfully</source>
                 <target>¡Artículo creado con éxito!</target>
+            </trans-unit>
+            <trans-unit id="label.fullname">
+                <source>label.fullname</source>
+                <target>Nombre completo</target>
+            </trans-unit>
+            <trans-unit id="label.email">
+                <source>label.email</source>
+                <target>Email</target>
             </trans-unit>
             <trans-unit id="post.updated_successfully">
                 <source>post.updated_successfully</source>
