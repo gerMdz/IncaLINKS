@@ -20,6 +20,7 @@ Con IncaLinks crea tus propios enlaces que serán más fáciles de recordar como
 ### ¿Qué más tiene?
 
 Tiene un manejo básico de usuarios para la administración de los enlaces.
+
 Se agrega la opción de acceso por api
 
 ### ¿Cómo lo obtengo?
