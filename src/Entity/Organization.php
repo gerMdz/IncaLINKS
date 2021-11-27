@@ -73,6 +73,11 @@ class Organization
      */
     private $isActive;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true, unique=true)
+     */
+    private $isManager;
+
     public function __construct()
     {
         $this->id = Uuid::v4()->toRfc4122();
@@ -245,6 +250,18 @@ class Organization
     public function setIsActive(bool $isActive): self
     {
         $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    public function getIsManager(): ?bool
+    {
+        return $this->isManager;
+    }
+
+    public function setIsManager(?bool $isManager): self
+    {
+        $this->isManager = $isManager;
 
         return $this;
     }

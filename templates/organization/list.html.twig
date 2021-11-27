@@ -2,8 +2,19 @@
 {% block body_id 'organization_list' %}
 
 {% block title %}Listado de organizaciones{% endblock %}
+{% block stylesheets %}
+{{ parent() }}
+    <style>
+        .border-green{
+            border-style: solid none;
+            border-color: #008855;
+            background-color: rgba(58, 219, 106, 0.18) !important;
+        }
+    </style>
+{% endblock %}
 
 {% block main %}
+
     <h1>Listado de organizaciones</h1>
 
     <div class="navigation">
@@ -13,7 +24,6 @@
     <table class="table table-striped table-middle-aligned">
         <thead>
             <tr>
-                <th>Id</th>
                 <th><i class="fa fa-home"></i> </th>
                 <th>{{ 'title.organization_identifier'|trans|raw }}</th>
                 <th><i class="fa fa-calendar-alt"></i> </th>
@@ -24,8 +34,12 @@
         </thead>
         <tbody>
         {% for organization in organizations %}
-            <tr>
-                <td>{{ organization.id  }}</td>
+            {% set claseBorde = '' %}
+            {% if organization.isManager == true %}
+                {% set claseBorde = 'border-green' %}
+            {% endif %}
+            <tr class="{{ claseBorde }}" >
+
                 <td>{{ organization.name }}<br/>
                 {{ organization.address }}</td>
                 <td>{{ organization.identifier }}</td>
@@ -37,7 +51,7 @@
                 <td>
                     <a href="{{ path('organization_show', {'id': organization.id}) }}">
                     <i class="fa fa-eye"></i>    {{ 'action.show' | trans }}
-                    </a>
+                    </a><br/>
                     <a href="{{ path('organization_edit', {'id': organization.id}) }}">
                     <i class="fa fa-edit"></i>    {{ 'action.edit' | trans }}
                     </a>

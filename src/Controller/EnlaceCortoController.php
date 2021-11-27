@@ -18,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class EnlaceCortoController extends AbstractController
 {
     /**
-     * @Route("/enlaces", name="enlace_corto_index", methods={"GET"})
+     * @Route("/admin/enlaces", name="enlace_corto_index", methods={"GET"})
      * @param EnlaceCortoRepository $enlaceCortoRepository
      * @param PaginatorInterface $paginator
      * @param Request $request
@@ -43,7 +43,7 @@ class EnlaceCortoController extends AbstractController
     }
 
     /**
-     * @Route("/enlaces/new", name="enlace_corto_new", methods={"GET","POST"})
+     * @Route("/admin/enlaces/new", name="enlace_corto_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -91,7 +91,7 @@ class EnlaceCortoController extends AbstractController
     }
 
     /**
-     * @Route("/enlaces/{id}", name="enlace_corto_show", methods={"GET"})
+     * @Route("/admin/enlaces/{id}", name="enlace_corto_show", methods={"GET"})
      */
     public function show(EnlaceCorto $enlaceCorto): Response
     {
@@ -113,7 +113,7 @@ class EnlaceCortoController extends AbstractController
 
 
     /**
-     * @Route("/enlaces/{id}/edit", name="enlace_corto_edit", methods={"GET","POST"})
+     * @Route("/admin/enlaces/{id}/edit", name="enlace_corto_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, EnlaceCorto $enlaceCorto): Response
     {
@@ -133,7 +133,7 @@ class EnlaceCortoController extends AbstractController
     }
 
     /**
-     * @Route("/enlaces/{id}", name="enlace_corto_delete", methods={"DELETE"})
+     * @Route("/admin/enlaces/{id}", name="enlace_corto_delete", methods={"DELETE"})
      */
     public function delete(Request $request, EnlaceCorto $enlaceCorto): Response
     {

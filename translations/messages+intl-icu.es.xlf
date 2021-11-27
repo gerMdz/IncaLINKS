@@ -436,6 +436,10 @@
                 <source>label.active</source>
                 <target>¿Activo?</target>
             </trans-unit>
+            <trans-unit id="label.manager">
+                <source>label.manager</source>
+                <target>¿Es Manager del sitio?</target>
+            </trans-unit>
             <trans-unit id="title.organization_new">
                 <source>title.organization_new</source>
                 <target>Nueva Organización</target>
