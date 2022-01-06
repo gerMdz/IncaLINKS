@@ -4238,10 +4238,10 @@ is-string@^1.0.5, is-string@^1.0.7:
   dependencies:
     has-tostringtag "^1.0.0"
 
-is-svg@^4.3.2:
-  version "4.3.2"
-  resolved "https://registry.yarnpkg.com/is-svg/-/is-svg-4.3.2.tgz#a119e9932e1af53f6be1969d1790d6cc5fd947d3"
-  integrity sha512-mM90duy00JGMyjqIVHu9gNTjywdZV+8qNasX8cm/EEYZ53PHDgajvbBwNVvty5dwSAxLUD3p3bdo+7sR/UMrpw==
+is-svg@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/is-svg/-/is-svg-4.3.0.tgz#3e46a45dcdb2780e42a3c8538154d7f7bfc07216"
+  integrity sha512-Np3TOGLVr0J27VDaS/gVE7bT45ZcSmX4pMmMTsPjqO8JY383fuPIcWmZr3QsHVWhqhZWxSdmW+tkkl3PWOB0Nw==
   dependencies:
     fast-xml-parser "^3.19.0"
 

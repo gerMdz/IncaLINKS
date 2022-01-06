@@ -32,7 +32,7 @@
     "dns-packet": "^5.3.1",
     "glob-parent": "^6.0.2",
     "hosted-git-info": "^4.1.0",
-    "is-svg": "^4.3.2",
+    "is-svg": "^4.3.0",
     "json-schema": "^0.4.0",
     "lodash": "^4.17.21",
     "node-sass": "^5.0.0",
