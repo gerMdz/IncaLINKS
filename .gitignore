@@ -35,3 +35,8 @@ docker-compose.yml.dist
 /data/database_test.sqlite
 /public/favicon/
 /sqls/
+
+###> friendsofphp/php-cs-fixer ###
+/.php-cs-fixer.php
+/.php-cs-fixer.cache
+###< friendsofphp/php-cs-fixer ###
