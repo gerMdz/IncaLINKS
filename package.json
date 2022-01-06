@@ -30,7 +30,7 @@
     "ansi-regex": "^6.0.1",
     "color-string": "^1.9.0",
     "dns-packet": "^5.3.1",
-    "glob-parent": "^6.0.2",
+    "glob-parent": "^5.1.2",
     "hosted-git-info": "^4.1.0",
     "is-svg": "^4.3.2",
     "json-schema": "^0.4.0",
