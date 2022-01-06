@@ -27,7 +27,7 @@
     "build": "encore production --progress"
   },
   "dependencies": {
-    "ansi-regex": "^6.0.1",
+    "ansi-regex": "^5.0.1",
     "color-string": "^1.9.0",
     "dns-packet": "^5.3.1",
     "glob-parent": "^6.0.2",
