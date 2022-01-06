@@ -21,6 +21,8 @@ Con IncaLinks crea tus propios enlaces que serán más fáciles de recordar como
 
 Tiene un manejo básico de usuarios para la administración de los enlaces.
 
+Se agrega la opción de acceso por api
+
 ### ¿Cómo lo obtengo?
 
 Para usar IncaLINKS debes bajarlo de github, y luego bajar sus dependencias de paquetes. 
