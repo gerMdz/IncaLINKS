@@ -12,7 +12,6 @@ Encore
     .cleanupOutputBeforeBuild()
     .autoProvidejQuery()
     .autoProvideVariables({
-        "window.Bloodhound": require.resolve('bloodhound-js'),
         "jQuery.tagsinput": "bootstrap-tagsinput"
     })
     .enableSassLoader()

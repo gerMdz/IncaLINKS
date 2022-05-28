@@ -1,7 +1,6 @@
 @import "~bootswatch/dist/flatly/variables";
-//@import "~eonasdan-bootstrap-datetimepicker/src/sass/bootstrap-datetimepicker-build.scss";
-@import "bootstrap-tagsinput.scss";
-
+@import "~bootstrap/scss/bootstrap";
+@import "~bootswatch/dist/flatly/bootswatch";
 /* Page: 'Backend post index'
    ------------------------------------------------------------------------- */
 body#admin_post_index .item-actions {

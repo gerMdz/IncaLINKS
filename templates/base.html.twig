@@ -78,19 +78,6 @@
                                         </ul>
                                     </li>
                                 {% endif %}
-
-{#                                <li class="dropdown">#}
-{#                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="locales">#}
-{#                                        <i class="fa fa-globe" aria-hidden="true"></i>#}
-{#                                        <span class="caret"></span>#}
-{#                                        <span class="sr-only">{{ 'menu.choose_language'|trans }}</span>#}
-{#                                    </a>#}
-{#                                    <ul class="dropdown-menu locales" role="menu" aria-labelledby="locales">#}
-{#                                        {% for locale in locales() %}#}
-{#                                            <li {% if app.request.locale == locale.code %}aria-checked="true" class="active"{% else %}aria-checked="false"{% endif %} role="menuitem"><a href="{{ path(app.request.get('_route', 'blog_index'), app.request.get('_route_params', [])|merge({_locale: locale.code})) }}">{{ locale.name|capitalize }} <small>{{ locale.code[0:2] }}</small></a></li>#}
-{#                                        {% endfor %}#}
-{#                                    </ul>#}
-{#                                </li>#}
                             </ul>
                         </div>
                     </div>
@@ -101,19 +88,14 @@
         <div class="container body-container">
             {% block body %}
                 <div class="row">
-                    <div id="main" class="col-sm-9">
+                    <div id="main" class="col-sm-10 mx-auto">
                         {{ include('default/_flash_messages.html.twig') }}
 
                         {% block main %}{% endblock %}
                     </div>
 
-                    <div id="sidebar" class="col-sm-3">
+                    <div id="sidebar" class="col-sm-2">
                         {% block sidebar %}
-                            {{ render_esi(controller('Symfony\\Bundle\\FrameworkBundle\\Controller\\TemplateController::templateAction', {
-                                'template': 'blog/about.html.twig',
-                                'sharedAge': 600,
-                                '_locale': app.request.locale
-                            })) }}
                         {% endblock %}
                     </div>
                 </div>
