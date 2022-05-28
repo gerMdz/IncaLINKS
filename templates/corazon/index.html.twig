@@ -1,0 +1,28 @@
+{% extends 'base_empty.html.twig' %}
+
+{% block title %}Corazones{% endblock %}
+
+
+{% block header %}
+    <div class="col-sm-6">
+        <div class="display-1" >
+            <span id="p"></span> P
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="display-1">
+            M
+        </div>
+    </div>
+
+{% endblock %}
+{%  block javascripts %}
+    <script>
+        fetch('/api/v1/corazones')
+            .then(response => response.json())
+            .then(
+                data => document.getElementById("p").innerHTML = data[0].personas,
+
+            );
+    </script>
+{% endblock %}

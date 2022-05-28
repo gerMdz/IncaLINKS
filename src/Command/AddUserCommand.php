@@ -86,7 +86,7 @@ class AddUserCommand extends Command
             ->addArgument('password', InputArgument::OPTIONAL, 'The plain password of the new user')
             ->addArgument('email', InputArgument::OPTIONAL, 'The email of the new user')
             ->addArgument('full-name', InputArgument::OPTIONAL, 'The full name of the new user')
-            ->addOption('admin', null, InputOption::VALUE_NONE, 'If set, the user is created as an administrator')
+            ->addOption('role', null, InputOption::VALUE_OPTIONAL, 'If set, the user is created as Role')
         ;
     }
 
@@ -178,7 +178,7 @@ class AddUserCommand extends Command
         $plainPassword = $input->getArgument('password');
         $email = $input->getArgument('email');
         $fullName = $input->getArgument('full-name');
-        $isAdmin = $input->getOption('admin');
+        $isAdmin = $input->getOption('role');
 
         // make sure to validate the user data is correct
         $this->validateUserData($username, $plainPassword, $email, $fullName);
@@ -188,7 +188,8 @@ class AddUserCommand extends Command
         $user->setFullName($fullName);
         $user->setUsername($username);
         $user->setEmail($email);
-        $user->setRoles([$isAdmin ? 'ROLE_ADMIN' : 'ROLE_USER']);
+        $user->setRoles([$isAdmin ? 'ROLE_'.strtoupper($isAdmin) : 'ROLE_USER']);
+        $user->setIsActive(true);
 
         // See https://symfony.com/doc/current/security.html#c-encoding-passwords
         $encodedPassword = $this->passwordEncoder->hashPassword($user, $plainPassword);
@@ -197,7 +198,7 @@ class AddUserCommand extends Command
         $this->entityManager->persist($user);
         $this->entityManager->flush();
 
-        $this->io->success(sprintf('%s was successfully created: %s (%s)', $isAdmin ? 'Administrator user' : 'User', $user->getUsername(), $user->getEmail()));
+        $this->io->success(sprintf('%s was successfully created: %s (%s)', $isAdmin ? $isAdmin . ' user' : 'User', $user->getUsername(), $user->getEmail()));
 
         $event = $stopwatch->stop('add-user-command');
         if ($output->isVerbose()) {
@@ -241,10 +242,10 @@ The <info>%command.name%</info> command creates new users and saves them in the 
 
   <info>php %command.full_name%</info> <comment>username password email</comment>
 
-By default the command creates regular users. To create administrator users,
-add the <comment>--admin</comment> option:
+By default the command creates regular users. To create other rol users,
+add the <comment>--role</comment> option:
 
-  <info>php %command.full_name%</info> username password email <comment>--admin</comment>
+  <info>php %command.full_name%</info> username password email <comment>--role</comment>
 
 If you omit any of the three required arguments, the command will ask you to
 provide the missing values:

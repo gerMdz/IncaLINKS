@@ -3,10 +3,10 @@
     "@fortawesome/fontawesome-free": "^5.8.1",
     "@symfony/webpack-encore": "^0.31.0",
     "bloodhound-js": "^1.2.3",
-    "bootstrap": "^4.5.3",
+    "bootstrap": "^5.1.3",
     "bootstrap-sass": "^3.3.7",
     "bootstrap-tagsinput": "^0.7.1",
-    "bootswatch": "^3.3.7",
+    "bootswatch": "^5.1.3",
     "bs-custom-file-input": "^1.3.4",
     "core-js": "^3.0.0",
     "eonasdan-bootstrap-datetimepicker": "^4.17.47",
@@ -15,7 +15,8 @@
     "jquery": "^3.5.1",
     "lato-font": "^3.0.0",
     "popper.js": "^1.16.1",
-    "sass-loader": "^10.1.0",
+    "sass": "^1.52.1",
+    "sass-loader": "9.0.1",
     "typeahead.js": "^0.11.1"
   },
   "license": "MIT",
@@ -27,6 +28,7 @@
     "build": "encore production --progress"
   },
   "dependencies": {
+    "@popperjs/core": "^2.10.2",
     "ansi-regex": "^6.0.1",
     "color-string": "^1.9.0",
     "dns-packet": "^5.3.1",
@@ -35,7 +37,6 @@
     "is-svg": "^4.3.2",
     "json-schema": "^0.4.0",
     "lodash": "^4.17.21",
-    "node-sass": "^7.0.0",
     "nth-check": "^2.0.1",
     "postcss": "^8.4.5",
     "ssri": "^8.0.1",

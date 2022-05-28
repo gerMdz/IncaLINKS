@@ -1,0 +1,7 @@
+App\Entity\Corazon:
+  attributes:
+
+    promise:
+      groups: [corazones_read]
+    persona:
+      groups: [corazones_read]

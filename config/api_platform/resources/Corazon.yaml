@@ -1,0 +1,43 @@
+App\Entity\Corazon:
+  attributes:
+    normalization_context:
+      groups: [corazon_get]
+  collectionOperations:
+#    post:
+#      method: POST
+#      security: is_granted("ENLACE_CREATE")
+#      denormalization_context:
+#        groups: [enlace_create]
+    get_list_corazones:
+      method: GET
+      path: /corazones
+      controller: App\Action\Corazones\ListCorazones
+      deserialize: false
+      normalization_context:
+        groups: [ corazones_get ]
+      openapi_context:
+        summary: Lista todos los corazones
+        responses:
+          200:
+            description: OK
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    personas:
+                      type: integer
+                    promesas:
+                      type: number
+#  itemOperations:
+#    get:
+#      method: GET
+#      security: is_granted("ENLACE_READ", object)
+#    put:
+#      method: PUT
+#      security: is_granted("ENLACE_UPDATE", object)
+#      denormalization_context:
+#        groups: [enlace_update]
+#    delete:
+#      method: DELETE
+#      security: is_granted("ENLACE_DELETE", object)

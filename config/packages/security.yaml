@@ -68,6 +68,8 @@ security:
         - { path: '^/(%app_locales%)/admin', roles: ROLE_ADMIN }
         - { path: '^/enlaces/new', roles: ROLE_ADMIN }
         - { path: '^/enlaces/\d+/edit', roles: ROLE_ADMIN }
+        - { path: '^/api/v1/corazones', roles: PUBLIC_ACCESS }
 
     role_hierarchy:
-        ROLE_ADMIN: ROLE_USER
+        ROLE_ADMIN: ROLE_FINANZAS
+        ROLE_FINANZAS: ROLE_USER
