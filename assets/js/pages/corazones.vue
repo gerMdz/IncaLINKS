@@ -74,22 +74,11 @@ export default {
 };
 </script>
 <style>
-/*html,*/
-/*body {*/
-/*  height: 100%;*/
-/*}*/
-
-/*.container {*/
-/*  height: 100%;*/
-/*  display: flex;*/
-/*  justify-content: center;*/
-/*  align-items: center;*/
-/*}*/
+@import url('https://fonts.googleapis.com/css2?family=Tinos&display=swap');
 
 .f-50 {
-
   font-size: 10rem;
-
+  font-family: 'Tinos', serif;
 }
 
 </style>
