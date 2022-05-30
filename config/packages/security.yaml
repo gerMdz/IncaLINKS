@@ -67,6 +67,7 @@ security:
         # additional security lives in the controllers
         - { path: '^/(%app_locales%)/admin', roles: ROLE_ADMIN }
         - { path: '^/enlaces/new', roles: ROLE_ADMIN }
+        - { path: '^/admin', roles: ROLE_FINANZAS }
         - { path: '^/enlaces/\d+/edit', roles: ROLE_ADMIN }
         - { path: '^/api/v1/corazones', roles: PUBLIC_ACCESS }
 
