@@ -34,6 +34,8 @@ class Corazon
      */
     private $promise;
 
+
+
     /**
      * @var DateTime $created
      *
@@ -57,6 +59,17 @@ class Corazon
      * @Gedmo\Timestampable(on="change", field={"promise"})
      */
     private $contentChanged;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $meses = 1;
+
+    public function __construct()
+    {
+        $this->created = new DateTime();
+        $this->updated = new DateTime();
+    }
 
     public function getId(): ?int
     {
@@ -102,7 +115,7 @@ class Corazon
     /**
      * @return DateTime
      */
-    public function getCreated(): DateTime
+    public function getCreated(): ?DateTime
     {
         return $this->created;
     }
@@ -110,17 +123,29 @@ class Corazon
     /**
      * @return DateTime
      */
-    public function getUpdated(): DateTime
+    public function getUpdated(): ?DateTime
     {
         return $this->updated;
     }
 
     /**
-     * @return DateTime
+     * @return DateTime|null
      */
-    public function getContentChanged(): DateTime
+    public function getContentChanged(): ?DateTime
     {
         return $this->contentChanged;
+    }
+
+    public function getMeses(): ?int
+    {
+        return $this->meses;
+    }
+
+    public function setMeses(int $meses): self
+    {
+        $this->meses = $meses;
+
+        return $this;
     }
 
 }

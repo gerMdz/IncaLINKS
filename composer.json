@@ -19,6 +19,7 @@
         "doctrine/doctrine-bundle": "^1.12|^2.0",
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^2.5.11",
+        "easycorp/easyadmin-bundle": "^3.5",
         "erusev/parsedown": "^1.6",
         "gedmo/doctrine-extensions": "^3.0",
         "knplabs/knp-paginator-bundle": "^5.3",

@@ -5,6 +5,7 @@
 // Read https://symfony.com/doc/current/frontend.html to learn more about how
 // to manage CSS and JavaScript files in Symfony applications.
 var Encore = require('@symfony/webpack-encore');
+var path = require('path');
 
 Encore
     .setOutputPath('public/build/')
@@ -24,6 +25,7 @@ Encore
     .addEntry('admin', './assets/js/admin.js')
     .addEntry('search', './assets/js/search.js')
     .addEntry('clipboard', './assets/js/clipboard.js')
+    .addEntry('corazones', './assets/js/corazones.js')
     .splitEntryChunks()
     .enableSingleRuntimeChunk()
     // .enableIntegrityHashes(Encore.isProduction())
@@ -31,6 +33,38 @@ Encore
         useBuiltIns: 'usage',
         corejs: 3,
     })
+
+    .splitEntryChunks()
+
+    // will require an extra script tag for runtime.js
+    // but, you probably want this, unless you're building a single-page app
+    .enableSingleRuntimeChunk()
+
+    // This is our alias to the root vue components dir
+    .addAliases({
+        '@': path.resolve(__dirname, 'assets', 'js'),
+        styles: path.resolve(__dirname, 'assets', 'scss'),
+    })
+
+    .copyFiles({
+        from: './assets/images',
+        to: Encore.isProduction()
+            ? 'images/[path][name].[hash:8].[ext]'
+            : 'images/[path][name].[ext]',
+    })
+
+    // Enable .vue file processing
+    .enableVueLoader()
+
+    // gives better module CSS naming in dev
+    .configureCssLoader((config) => {
+        if (!Encore.isProduction() && config.modules) {
+            config.modules.localIdentName = '[name]_[local]_[hash:base64:5]';
+        }
+    })
+
+    // enables Sass/SCSS support
+    .enableSassLoader()
 ;
 
 module.exports = Encore.getWebpackConfig();

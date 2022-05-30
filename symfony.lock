@@ -1,7 +1,4 @@
 {
-    "api-platform/api-pack": {
-        "version": "v1.3.0"
-    },
     "api-platform/core": {
         "version": "2.5",
         "recipe": {
@@ -137,6 +134,15 @@
     "doctrine/sql-formatter": {
         "version": "1.0.1"
     },
+    "easycorp/easyadmin-bundle": {
+        "version": "3.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "3.0",
+            "ref": "b131e6cbfe1b898a508987851963fff485986285"
+        }
+    },
     "egulias/email-validator": {
         "version": "2.1.17"
     },
@@ -158,6 +164,9 @@
             ".php-cs-fixer.dist.php"
         ]
     },
+    "friendsofphp/proxy-manager-lts": {
+        "version": "v1.0.12"
+    },
     "gedmo/doctrine-extensions": {
         "version": "v3.0.0"
     },
@@ -166,6 +175,12 @@
     },
     "knplabs/knp-paginator-bundle": {
         "version": "v5.3.0"
+    },
+    "laminas/laminas-code": {
+        "version": "3.4.1"
+    },
+    "laminas/laminas-eventmanager": {
+        "version": "3.2.1"
     },
     "laminas/laminas-zendframework-bridge": {
         "version": "1.1.1"
@@ -193,12 +208,6 @@
     },
     "nikic/php-parser": {
         "version": "v4.4.0"
-    },
-    "ocramius/proxy-manager": {
-        "version": "2.2.3"
-    },
-    "php": {
-        "version": "7.2.9"
     },
     "php-cs-fixer/diff": {
         "version": "v2.0.2"
@@ -416,9 +425,6 @@
     "symfony/options-resolver": {
         "version": "v5.1.0-rc1"
     },
-    "symfony/orm-pack": {
-        "version": "v2.1.0"
-    },
     "symfony/password-hasher": {
         "version": "v5.3.0"
     },
@@ -522,9 +528,6 @@
     },
     "symfony/serializer": {
         "version": "v5.3.8"
-    },
-    "symfony/serializer-pack": {
-        "version": "v1.0.4"
     },
     "symfony/service-contracts": {
         "version": "v2.0.1"
@@ -661,11 +664,5 @@
     },
     "willdurand/negotiation": {
         "version": "3.0.0"
-    },
-    "zendframework/zend-code": {
-        "version": "3.4.1"
-    },
-    "zendframework/zend-eventmanager": {
-        "version": "3.2.1"
     }
 }

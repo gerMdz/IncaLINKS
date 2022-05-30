@@ -48,7 +48,7 @@ class CorazonRepository extends ServiceEntityRepository
     public function countCorazones()
     {
         return $this->createQueryBuilder('corazon')
-            ->select('SUM(corazon.promise) as promesas, COUNT(corazon.promise) as personas')
+            ->select('SUM(corazon.promise * corazon.meses) as promesas, COUNT(corazon.promise) as personas')
             ->getQuery()
             ->getArrayResult();
     }
