@@ -52,7 +52,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
     /**
      * @var string
      *
-     * @ORM\Column(type="string", unique=true)
+     * @ORM\Column(type="string", unique=true, length=150)
      * @Assert\NotBlank()
      * @Assert\Length(min=2, max=50)
      */

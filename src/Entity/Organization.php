@@ -19,8 +19,7 @@ class Organization
 {
     /**
      * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="uuid", unique=true)
      */
     private $id;
 
@@ -84,7 +83,7 @@ class Organization
         $this->users = new ArrayCollection();
     }
 
-    public function getId(): ?string
+    public function getId(): ?Uuid
     {
         return $this->id;
     }

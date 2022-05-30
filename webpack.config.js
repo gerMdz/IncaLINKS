@@ -26,6 +26,7 @@ Encore
     .addEntry('search', './assets/js/search.js')
     .addEntry('clipboard', './assets/js/clipboard.js')
     .addEntry('corazones', './assets/js/corazones.js')
+    .addEntry('app_corazones', './assets/js/app_corazones.js')
     .splitEntryChunks()
     .enableSingleRuntimeChunk()
     // .enableIntegrityHashes(Encore.isProduction())
