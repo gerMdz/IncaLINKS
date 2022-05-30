@@ -65,6 +65,11 @@ class Corazon
      */
     private $meses = 1;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $apellido;
+
     public function __construct()
     {
         $this->created = new DateTime();
@@ -144,6 +149,18 @@ class Corazon
     public function setMeses(int $meses): self
     {
         $this->meses = $meses;
+
+        return $this;
+    }
+
+    public function getApellido(): ?string
+    {
+        return $this->apellido;
+    }
+
+    public function setApellido(?string $apellido): self
+    {
+        $this->apellido = $apellido;
 
         return $this;
     }

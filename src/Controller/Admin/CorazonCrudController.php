@@ -20,9 +20,11 @@ class CorazonCrudController extends AbstractCrudController
     {
         return [
 //            IdField::new('id'),
-            TextField::new('name'),
+            TextField::new('name', 'Nombre'),
+            TextField::new('apellido'),
             EmailField::new('email'),
-            NumberField::new('promise'),
+            NumberField::new('promise', 'Promesa'),
+            NumberField::new('meses', 'Meses'),
         ];
     }
 
