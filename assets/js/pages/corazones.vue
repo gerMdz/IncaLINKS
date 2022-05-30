@@ -50,7 +50,9 @@ export default {
     },
     somos() {
       let personasHay = this.corazones.personas;
-
+        if(personasHay === undefined){
+          personasHay = '';
+        }
       return personasHay + ' P';
     }
   },
@@ -62,13 +64,13 @@ export default {
       let response;
       try {
         response = await fetchCorazones();
-        console.log('response ' + response);
+
       } catch (e) {
-        console.log(e)
+
         return;
       }
       this.corazones = response.data[0];
-      console.log('corazones ' + this.corazones);
+
     },
   },
 };
