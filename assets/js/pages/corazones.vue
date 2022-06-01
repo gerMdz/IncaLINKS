@@ -76,11 +76,11 @@ export default {
 };
 </script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Tinos&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Domine:wght@500&display=swap');
 
 .f-50 {
   font-size: 10rem;
-  font-family: 'Tinos', serif;
+  font-family: 'Domine', serif;
 }
 
 </style>
