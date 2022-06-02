@@ -4,10 +4,12 @@
       <header class="container h-100">
         <div class="d-inline-flex align-items-center justify-content-center h-100 w-100">
           <div class="col-md-6 col-sm-12 f-50 text-center">
-            {{ somos }}
+            <i v-if="cargando" class="fa-spin">...</i>
+            {{ somos }} <small style="font-size: 0.8em"> P</small>
           </div>
           <div class="col-md-6 col-sm-12 f-50 text-center">
-            {{ llevamos }}
+            <i v-if="cargando" class="fa-spin">...</i>
+            {{ llevamos }} <small style="font-size: 0.8em"> M</small>
           </div>
         </div>
       </header>
@@ -21,9 +23,12 @@ import {fetchCorazones} from "../services/corazones-service";
 
 export default {
   name: 'Corazones',
-  components: {},
+  components: {
+
+  },
   data() {
     return {
+      cargando: true,
       corazones: {
         promesas: this.corazones,
         personas: this.corazones,
@@ -42,18 +47,20 @@ export default {
   },
   computed: {
     llevamos() {
-      let prometido = 0;
-      if (this.corazones.promesas > 1000000) {
-        prometido = this.corazones.promesas / 1000000
+
+      let prometido = this.corazones.promesas / 1000000
+      if(isNaN(prometido)){
+        prometido = '';
       }
-      return prometido + ' M';
+
+      return prometido ;
     },
     somos() {
       let personasHay = this.corazones.personas;
         if(personasHay === undefined){
           personasHay = '';
         }
-      return personasHay + ' P';
+      return personasHay ;
     }
   },
 
@@ -69,6 +76,7 @@ export default {
 
         return;
       }
+      this.cargando = false;
       this.corazones = response.data[0];
 
     },

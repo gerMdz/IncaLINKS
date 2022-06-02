@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Corazon;
+use App\Entity\Countandadd;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
@@ -12,7 +13,7 @@ class CorazonCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Corazon::class;
+        return Countandadd::class;
     }
 
 
@@ -20,11 +21,13 @@ class CorazonCrudController extends AbstractCrudController
     {
         return [
 //            IdField::new('id'),
-            TextField::new('name', 'Nombre'),
-            TextField::new('apellido'),
-            EmailField::new('email'),
-            NumberField::new('promise', 'Promesa'),
-            NumberField::new('meses', 'Meses'),
+//            TextField::new('name', 'Nombre'),
+//            TextField::new('apellido'),
+//            EmailField::new('email'),
+//            NumberField::new('promise', 'Promesa'),
+//            NumberField::new('meses', 'Meses'),
+            NumberField::new('totalPeople', 'Personas'),
+            NumberField::new('totalPromises', 'Promesas'),
         ];
     }
 

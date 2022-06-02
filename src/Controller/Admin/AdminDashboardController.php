@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Corazon;
+use App\Entity\Countandadd;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -43,6 +44,6 @@ class AdminDashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
 //        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Corazones', 'fas fa-heart text-primary', Corazon::class);
+        yield MenuItem::linkToCrud('Corazones', 'fas fa-heart text-primary', Countandadd::class);
     }
 }
