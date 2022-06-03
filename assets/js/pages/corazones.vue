@@ -1,19 +1,20 @@
 <template>
-  <div class="container" style="height: 100%">
-    <section class="h-100">
-      <header class="container h-100">
-        <div class="d-inline-flex align-items-center justify-content-center h-100 w-100">
-          <div class="col-md-6 col-sm-12 f-50 text-center">
-            <i v-if="cargando" class="fa-spin">...</i>
-            {{ somos }} <small style="font-size: 0.8em"> P</small>
-          </div>
-          <div class="col-md-6 col-sm-12 f-50 text-center">
-            <i v-if="cargando" class="fa-spin">...</i>
-            {{ llevamos }} <small style="font-size: 0.8em"> M</small>
-          </div>
-        </div>
-      </header>
-    </section>
+  <div class="container-fluid " style="height: 100%">
+
+
+    <div class="d-flex align-items-center h-100 w-100">
+      <div class="col-md-5 col-sm-12 f-50 text-end mr-5 ">
+        <i v-if="cargando" class="fa-spin">...</i>
+        {{ somos }} <small style="font-size: 0.8em"> P</small>
+      </div>
+      <div class="col-sm-1"></div>
+      <div class="col-md-6 col-sm-12 f-50">
+        <i v-if="cargando" class="fa-spin">...</i>
+        {{ llevamos }} <small style="font-size: 0.8em"> M</small>
+      </div>
+    </div>
+
+
   </div>
 </template>
 
@@ -23,9 +24,7 @@ import {fetchCorazones} from "../services/corazones-service";
 
 export default {
   name: 'Corazones',
-  components: {
-
-  },
+  components: {},
   data() {
     return {
       cargando: true,
@@ -49,18 +48,18 @@ export default {
     llevamos() {
 
       let prometido = this.corazones.promesas / 1000000
-      if(isNaN(prometido)){
+      if (isNaN(prometido)) {
         prometido = '';
       }
 
-      return prometido ;
+      return prometido;
     },
     somos() {
       let personasHay = this.corazones.personas;
-        if(personasHay === undefined){
-          personasHay = '';
-        }
-      return personasHay ;
+      if (personasHay === undefined) {
+        personasHay = '';
+      }
+      return personasHay;
     }
   },
 
