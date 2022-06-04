@@ -6,5 +6,5 @@
  */
 export default (promise) => (
     (promise / 1000000)
-        .toLocaleString('es-AR', { maximumSignificantDigits: 3, maximumFractionDigits: 2 })
+        .toLocaleString('es-AR', { maximumFractionDigits: 2, minimumIntegerDigits: 2 })
 );
