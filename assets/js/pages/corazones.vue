@@ -21,6 +21,7 @@
 <script>
 
 import {fetchCorazones} from "../services/corazones-service";
+import formatPromise from '../helpers/format-promise';
 
 export default {
   name: 'Corazones',
@@ -47,12 +48,12 @@ export default {
   computed: {
     llevamos() {
 
-      let prometido = this.corazones.promesas / 1000000
+      let prometido = this.corazones.promesas
       if (isNaN(prometido)) {
-        prometido = '';
+       return  prometido = '';
       }
+      return formatPromise(this.corazones.promesas);
 
-      return prometido.toFixed(2);
     },
     somos() {
       let personasHay = this.corazones.personas;
