@@ -52,7 +52,7 @@ export default {
         prometido = '';
       }
 
-      return prometido;
+      return prometido.toFixed(2);
     },
     somos() {
       let personasHay = this.corazones.personas;
