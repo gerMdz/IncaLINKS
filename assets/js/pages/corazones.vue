@@ -83,7 +83,7 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Domine:wght@500&display=swap');
 
 .f-50 {
-  font-size: 9em;
+  font-size:9rem;
   font-family: 'Domine', serif;
 }
 
