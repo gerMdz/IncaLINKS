@@ -4,13 +4,30 @@
 //$web-font-path: 'data:text/css;base64,';
 
 // Make sure the bootstrap-sass and lato fonts are resolved correctly
-
+@import url('https://fonts.googleapis.com/css2?family=Domine:wght@500&display=swap');
 //@import "~bootswatch/dist/flatly/variables";
 @import "~bootstrap";
+@import "~bootstrap/scss/mixins";
 //@import "~bootswatch/dist/flatly/bootswatch";
 //@import "~bootswatch/flatly/variables";
 //@import "~bootstrap-sass/assets/stylesheets/bootstrap";
 //@import "~bootswatch/dist/flatly/bootswatch";
 @import "~@fortawesome/fontawesome-free";
+.f-50 {
+  font-size:9rem;
+  font-family: 'Domine', serif;
+}
+//@include media-breakpoint-up(sm) {
+//  .f-50 {
+//    font-size:5rem;
+//    font-family: 'Domine', serif;
+//  }
+//}
+@include media-breakpoint-down(md) {
+  .f-50 {
+    font-size:5rem;
+    font-family: 'Domine', serif;
+  }
+}
 
 
