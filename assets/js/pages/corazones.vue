@@ -1,7 +1,7 @@
 <template>
   <div class="row">
-    <div class="col-md-2 col-sm-12"></div>
-    <div class="col-lg-4 col-sm-12 f-50 text-center">
+    <div class="col-md-1 col-sm-12"></div>
+    <div class="col-lg-5 col-sm-12 f-50 text-center">
       <i v-if="cargando" class="fa-spin">...</i>
       <span>{{ somos }} <small style="font-size: 0.8em"> P</small></span>
     </div>
