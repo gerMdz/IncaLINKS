@@ -6,7 +6,7 @@
       <span>{{ somos }} <small style="font-size: 0.8em"> P</small></span>
     </div>
 
-    <div class="col-md-6 col-sm-12  f-50 text-center text-nowrap">
+    <div class="col-md-6 col-sm-12  f-50 text-center text-nowrap py-sm-1 ">
       <i v-if="cargando" class="fa-spin">...</i>
       <span>{{ llevamos }} <small style="font-size: 0.8em"> M</small></span>
     </div>
