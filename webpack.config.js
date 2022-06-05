@@ -55,7 +55,8 @@ Encore
     })
 
     // Enable .vue file processing
-    .enableVueLoader()
+    // .enableVueLoader()
+    .enableVueLoader(() => {}, { runtimeCompilerBuild: true })
 
     // gives better module CSS naming in dev
     .configureCssLoader((config) => {
