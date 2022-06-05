@@ -1,16 +1,19 @@
+{% extends 'base_empty.html.twig' %}
+
 {% block stylesheets %}
     {{ encore_entry_link_tags('app_corazones') }}
     {{ encore_entry_link_tags('corazones') }}
 
 {% endblock %}
-{% block body %}
-    <div id="app"></div>
-{% endblock %}
-
-
-
 {% block javascripts %}
     {{ encore_entry_script_tags('app_corazones') }}
     {{ encore_entry_script_tags('corazones') }}
 
 {% endblock %}
+{% block header %}
+    <div id="app"></div>
+{% endblock %}
+
+
+
+

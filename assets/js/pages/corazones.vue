@@ -1,21 +1,18 @@
 <template>
-  <div class="container-fluid " style="height: 100%">
-
-
-    <div class="d-flex align-items-center h-100 w-100">
-      <div class="col-md-5 col-sm-12 f-50 text-end mr-5 ">
-        <i v-if="cargando" class="fa-spin">...</i>
-        {{ somos }} <small style="font-size: 0.8em"> P</small>
-      </div>
-      <div class="col-sm-1"></div>
-      <div class="col-md-6 col-sm-12 f-50">
-        <i v-if="cargando" class="fa-spin">...</i>
-        {{ llevamos }} <small style="font-size: 0.8em"> M</small>
-      </div>
+  <div class="row">
+    <div class="col-md-1 col-sm-12"></div>
+    <div class="col-lg-4 col-sm-12 f-50 text-end ">
+      <i v-if="cargando" class="fa-spin">...</i>
+      <span>{{ somos }} <small style="font-size: 0.8em"> P</small></span>
     </div>
-
-
+    <div class="col-md-1 col-sm-12"></div>
+    <div class="col-lg-6 col-sm-12 f-50 text-start text-nowrap">
+      <i v-if="cargando" class="fa-spin">...</i>
+      <span>{{ llevamos }} <small style="font-size: 0.8em"> M</small></span>
+    </div>
   </div>
+
+
 </template>
 
 <script>
@@ -50,7 +47,7 @@ export default {
 
       let prometido = this.corazones.promesas
       if (isNaN(prometido)) {
-       return  prometido = '';
+        return prometido = '';
       }
       return formatPromise(this.corazones.promesas);
 
@@ -83,12 +80,13 @@ export default {
   },
 };
 </script>
-<style>
+<style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Domine:wght@500&display=swap');
 
 .f-50 {
-  font-size: 10rem;
+  font-size: 9em;
   font-family: 'Domine', serif;
 }
+
 
 </style>
