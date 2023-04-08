@@ -26,7 +26,12 @@ class EnlaceCortoController extends AbstractController
      */
     public function index(EnlaceCortoRepository $enlaceCortoRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        $enlaces_cortos_query = $enlaceCortoRepository->findAllEnlaces();
+        $search = null;
+        if ($request->query->get('search')) {
+            $search = $request->query->get('search');
+        }
+
+        $enlaces_cortos_query = $enlaceCortoRepository->findAllEnlaces($search);
 
         $enlaces_cortos = $paginator->paginate(
         // Consulta Doctrine, no resultados
@@ -111,7 +116,6 @@ class EnlaceCortoController extends AbstractController
     }
 
 
-
     /**
      * @Route("/enlaces/{id}/edit", name="enlace_corto_edit", methods={"GET","POST"})
      */
@@ -137,7 +141,7 @@ class EnlaceCortoController extends AbstractController
      */
     public function delete(Request $request, EnlaceCorto $enlaceCorto): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$enlaceCorto->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $enlaceCorto->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($enlaceCorto);
             $entityManager->flush();

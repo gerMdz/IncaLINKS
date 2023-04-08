@@ -275,7 +275,7 @@
             </trans-unit>
             <trans-unit id="post.no_posts_found">
                 <source>post.no_posts_found</source>
-                <target>No se ha encontrado ningún artículo.</target>
+                <target>No se ha encontrado ningún enlace.</target>
             </trans-unit>
 
             <trans-unit id="help.app_description">
