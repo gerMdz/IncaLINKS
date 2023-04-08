@@ -21,11 +21,17 @@ class EnlaceCortoRepository extends ServiceEntityRepository
     }
 
 
-    public function findAllEnlaces(): QueryBuilder
+    public function findAllEnlaces($search = null): QueryBuilder
     {
-        return $this->createQueryBuilder('e')
+        $qb = $this->createQueryBuilder('e')
             ->orderBy('e.linkRoute', 'ASC')
         ;
+        if($search){
+            $qb->where('e.enlace LIKE :param OR e.linkRoute LIKE :param')
+                ->setParameter('param', '%' . $search . '%');
+        }
+
+        return $qb;
     }
 
 

@@ -5,6 +5,10 @@
 
 {% block main %}
     <h1>Listado de enlaces cortos</h1>
+    <form action="{{ path(app.request.get('_route')) }}" method="get" class="d-flex">
+        <input type="text" name="search" id="search" class="form-control me-2" placeholder="Buscar" aria-label="Buscar">
+        <button type="submit" class="btn btn-outline-secondary">Buscar</button>
+    </form>
     <div class="navigation">
         {{ knp_pagination_render(enlace_cortos) }}
     </div>
