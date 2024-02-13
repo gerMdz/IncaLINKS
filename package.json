@@ -41,7 +41,7 @@
     "json-schema": "^0.4.0",
     "lodash": "^4.17.21",
     "nth-check": "^2.0.1",
-    "postcss": "^8.4.5",
+    "postcss": "^8.4.31",
     "ssri": "^8.0.1",
     "trim-newlines": "^4.0.2",
     "url-parse": "^1.5.9",
