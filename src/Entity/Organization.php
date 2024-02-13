@@ -9,68 +9,44 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Uid\Uuid;
 
-/**
- * @ORM\Entity(repositoryClass=OrganizationRepository::class)
- *
- * @ORM\Table(name="inca_organization")
- */
+
+#[ORM\Table(name: 'inca_organization')]
+#[ORM\Entity(repositoryClass: OrganizationRepository::class)]
 class Organization
 {
-    /**
-     * @ORM\Id
-     *
-     * @ORM\Column(type="uuid", unique=true)
-     */
+    
+    #[ORM\Id]
+    #[ORM\Column(type: 'uuid', unique: true)]
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=510)
-     */
+    #[ORM\Column(type: 'string', length: 510)]
     private $name;
 
-    /**
-     * @ORM\Column(type="string", length=1020)
-     */
+    #[ORM\Column(type: 'string', length: 1020)]
     private $address;
 
-    /**
-     * @ORM\Column(type="string", length=10, unique=true, nullable=true)
-     */
+    #[ORM\Column(type: 'string', length: 10, unique: true, nullable: true)]
     private $identifier;
 
-    /**
-     * @ORM\Column(type="datetime_immutable")
-     */
+    #[ORM\Column(type: 'datetime_immutable')]
     private $createdAt;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
+    #[ORM\Column(type: 'datetime')]
     private $updatedAt;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: 'string', length: 255)]
     private $responsable;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: 'string', length: 255)]
     private $email;
 
-    /**
-     * @ORM\OneToMany(targetEntity=EnlaceCorto::class, mappedBy="owner")
-     */
+    #[ORM\OneToMany(targetEntity: EnlaceCorto::class, mappedBy: 'owner')]
     private $enlaces;
 
-    /**
-     * @ORM\OneToMany(targetEntity=User::class, mappedBy="organization")
-     */
+    #[ORM\OneToMany(targetEntity: User::class, mappedBy: 'organization')]
     private $users;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
+    #[ORM\Column(type: 'boolean')]
     private $isActive = true;
 
     public function __construct()

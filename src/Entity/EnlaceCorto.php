@@ -7,46 +7,35 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Serializer\Annotation\Groups;
 
-/**
- * @ORM\Entity(repositoryClass=EnlaceCortoRepository::class)
- *
- * @ORM\Table(name="inca_enlace_corto")
- */
+
+#[ORM\Table(name: 'inca_enlace_corto')]
+#[ORM\Entity(repositoryClass: EnlaceCortoRepository::class)]
 class EnlaceCorto
 {
-    /**
-     * @ORM\Id
-     *
-     * @ORM\GeneratedValue
-     *
-     * @ORM\Column(type="integer")
-     */
+    
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=150, unique=true, nullable=true)
      *
      * @Gedmo\Slug(fields={"enlace"})
      *
-     * @Groups("enlace_get")
      */
+    #[ORM\Column(type: 'string', length: 150, unique: true, nullable: true)]
+    #[Groups('enlace_get')]
     private $enlace;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     *
-     * @Groups("enlace_get")
-     */
+    
+    #[ORM\Column(type: 'string', length: 255)]
+    #[Groups('enlace_get')]
     private $linkRoute;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Organization::class, inversedBy="enlaces")
-     */
+    #[ORM\ManyToOne(targetEntity: Organization::class, inversedBy: 'enlaces')]
     private $owner;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
+    #[ORM\Column(type: 'boolean')]
     private $isActive = true;
 
     public function __construct()

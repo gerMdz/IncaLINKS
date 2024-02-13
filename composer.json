@@ -10,7 +10,7 @@
         "symfony/polyfill-php72": "*"
     },
     "require": {
-        "php": "^7.4",
+        "php": "^8.0.2",
         "ext-json": "*",
         "ext-pdo_sqlite": "*",
         "api-platform/core": "^2.6",
@@ -31,7 +31,7 @@
         "symfony/console": "^5.4",
         "symfony/dotenv": "^5.4",
         "symfony/expression-language": "^5.4",
-        "symfony/flex": "^1.1",
+        "symfony/flex": "^2.1",
         "symfony/form": "^5.4",
         "symfony/framework-bundle": "^5.4",
         "symfony/intl": "^5.4",
@@ -72,7 +72,7 @@
     },
     "config": {
         "platform": {
-            "php": "7.4"
+            "php": "8.0.2"
         },
         "preferred-install": {
             "*": "dist"

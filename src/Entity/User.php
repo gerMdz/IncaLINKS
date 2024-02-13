@@ -17,83 +17,71 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  *
- * @ORM\Table(name="inca_user")
- *
- * Defines the properties of the User entity to represent the application users.
- * See https://symfony.com/doc/current/doctrine.html#creating-an-entity-class
- *
- * Tip: if you have an existing database, you can generate these entities class automatically.
- * See https://symfony.com/doc/current/doctrine/reverse_engineering.html
  *
  * @author Ryan Weaver <weaverryan@gmail.com>
  * @author Javier Eguiluz <javier.eguiluz@gmail.com>
  */
+#[ORM\Table(name: 'inca_user')]
+#[ORM\Entity(repositoryClass: 'App\Repository\UserRepository')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serializable
 {
     /**
      * @var int
      *
-     * @ORM\Id
      *
-     * @ORM\GeneratedValue
      *
-     * @ORM\Column(type="integer")
      */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string")
      *
-     * @Assert\NotBlank()
      */
+    #[ORM\Column(type: 'string')]
+    #[Assert\NotBlank]
     private $fullName;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", unique=true, length=150)
      *
-     * @Assert\NotBlank()
      *
-     * @Assert\Length(min=2, max=50)
      */
+    #[ORM\Column(type: 'string', unique: true, length: 150)]
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 2, max: 50)]
     private $username;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=180, unique=true)
      *
-     * @Assert\Email()
      */
+    #[ORM\Column(type: 'string', length: 180, unique: true)]
+    #[Assert\Email]
     private $email;
 
     /**
      * @var string
-     *
-     * @ORM\Column(type="string")
      */
+    #[ORM\Column(type: 'string')]
     private $password;
 
     /**
      * @var array
-     *
-     * @ORM\Column(type="json")
      */
+    #[ORM\Column(type: 'json')]
     private $roles = [];
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Organization::class, inversedBy="users")
-     */
+    #[ORM\ManyToOne(targetEntity: Organization::class, inversedBy: 'users')]
     private $organization;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
+    #[ORM\Column(type: 'boolean')]
     private $isActive;
 
     public function getId(): ?int

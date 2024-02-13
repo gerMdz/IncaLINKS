@@ -12,14 +12,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/")
- */
+#[Route(path: '/')]
 class EnlaceCortoController extends AbstractController
 {
-    /**
-     * @Route("/enlaces", name="enlace_corto_index", methods={"GET"})
-     */
+    #[Route(path: '/enlaces', name: 'enlace_corto_index', methods: ['GET'])]
     public function index(EnlaceCortoRepository $enlaceCortoRepository, PaginatorInterface $paginator, Request $request): Response
     {
         $search = null;
@@ -43,9 +39,7 @@ class EnlaceCortoController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/enlaces/new", name="enlace_corto_new", methods={"GET","POST"})
-     */
+    #[Route(path: '/enlaces/new', name: 'enlace_corto_new', methods: ['GET', 'POST'])]
     public function new(Request $request): Response
     {
         $enlaceCorto = new EnlaceCorto();
@@ -66,9 +60,7 @@ class EnlaceCortoController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/ingreso", name="page_login", methods={"GET"})
-     */
+    #[Route(path: '/ingreso', name: 'page_login', methods: ['GET'])]
     public function loginPage(): RedirectResponse
     {
         return $this->redirectToRoute(
@@ -76,9 +68,7 @@ class EnlaceCortoController extends AbstractController
         );
     }
 
-    /**
-     * @Route("/{enlace}", name="enlace_corto_pagina", methods={"GET"})
-     */
+    #[Route(path: '/{enlace}', name: 'enlace_corto_pagina', methods: ['GET'])]
     public function irEnlace(EnlaceCorto $enlaceCorto): RedirectResponse
     {
         return $this->redirect(
@@ -86,9 +76,7 @@ class EnlaceCortoController extends AbstractController
         );
     }
 
-    /**
-     * @Route("/enlaces/{id}", name="enlace_corto_show", methods={"GET"})
-     */
+    #[Route(path: '/enlaces/{id}', name: 'enlace_corto_show', methods: ['GET'])]
     public function show(EnlaceCorto $enlaceCorto): Response
     {
         return $this->render('enlace_corto/show.html.twig', [
@@ -96,9 +84,7 @@ class EnlaceCortoController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/enlaces/{id}/redirigir", name="enlace_corto_redirect", methods={"GET"})
-     */
+    #[Route(path: '/enlaces/{id}/redirigir', name: 'enlace_corto_redirect', methods: ['GET'])]
     public function redirigir(EnlaceCorto $enlaceCorto): Response
     {
         return $this->redirect(
@@ -106,9 +92,7 @@ class EnlaceCortoController extends AbstractController
         );
     }
 
-    /**
-     * @Route("/enlaces/{id}/edit", name="enlace_corto_edit", methods={"GET","POST"})
-     */
+    #[Route(path: '/enlaces/{id}/edit', name: 'enlace_corto_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, EnlaceCorto $enlaceCorto): Response
     {
         $form = $this->createForm(EnlaceCortoType::class, $enlaceCorto);
@@ -126,9 +110,7 @@ class EnlaceCortoController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/enlaces/{id}", name="enlace_corto_delete", methods={"DELETE"})
-     */
+    #[Route(path: '/enlaces/{id}', name: 'enlace_corto_delete', methods: ['DELETE'])]
     public function delete(Request $request, EnlaceCorto $enlaceCorto): Response
     {
         if ($this->isCsrfTokenValid('delete'.$enlaceCorto->getId(), $request->request->get('_token'))) {

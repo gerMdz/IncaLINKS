@@ -7,70 +7,53 @@ use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
-/**
- * @ORM\Entity(repositoryClass=CorazonRepository::class)
- */
+#[ORM\Entity(repositoryClass: CorazonRepository::class)]
 class Corazon
 {
-    /**
-     * @ORM\Id
-     *
-     * @ORM\GeneratedValue
-     *
-     * @ORM\Column(type="integer")
-     */
+    
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: 'string', length: 255)]
     private $name;
 
-    /**
-     * @ORM\Column(type="string", length=150, unique=true )
-     */
+    #[ORM\Column(type: 'string', length: 150, unique: true)]
     private $email;
 
-    /**
-     * @ORM\Column(type="float")
-     */
+    #[ORM\Column(type: 'float')]
     private $promise;
 
     /**
      * @var \DateTime
      *
      * @Gedmo\Timestampable(on="create")
-     *
-     * @ORM\Column(type="datetime")
      */
+    #[ORM\Column(type: 'datetime')]
     private $created;
 
     /**
      * @var \DateTime
      *
      * @Gedmo\Timestampable(on="update")
-     *
-     * @ORM\Column(type="datetime")
      */
+    #[ORM\Column(type: 'datetime')]
     private $updated;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="content_changed", type="datetime", nullable=true)
      *
      * @Gedmo\Timestampable(on="change", field={"promise"})
      */
+    #[ORM\Column(name: 'content_changed', type: 'datetime', nullable: true)]
     private $contentChanged;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Column(type: 'integer')]
     private $meses = 1;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $apellido;
 
     public function __construct()

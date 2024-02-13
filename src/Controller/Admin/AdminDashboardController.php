@@ -22,9 +22,7 @@ class AdminDashboardController extends AbstractDashboardController
         $this->adminUrlGenerator = $adminUrlGenerator;
     }
 
-    /**
-     * @Route("/admin", name="admin")
-     */
+    #[Route(path: '/admin', name: 'admin')]
     public function index(): Response
     {
         $routeBuilder = $this->adminUrlGenerator;

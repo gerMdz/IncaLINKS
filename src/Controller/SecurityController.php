@@ -23,18 +23,16 @@ use Symfony\Component\Security\Http\Util\TargetPathTrait;
  * Controller used to manage the application security.
  * See https://symfony.com/doc/current/security/form_login_setup.html.
  *
- * @Route("/ingreso")
  *
  * @author Ryan Weaver <weaverryan@gmail.com>
  * @author Javier Eguiluz <javier.eguiluz@gmail.com>
  */
+#[Route(path: '/ingreso')]
 class SecurityController extends AbstractController
 {
     use TargetPathTrait;
 
-    /**
-     * @Route("/login", name="security_login")
-     */
+    #[Route(path: '/login', name: 'security_login')]
     public function login(Request $request, Security $security, AuthenticationUtils $helper): Response
     {
         // if user is already logged in, don't display the login page again
@@ -62,10 +60,10 @@ class SecurityController extends AbstractController
      * But, this will never be executed. Symfony will intercept this first
      * and handle the logout automatically. See logout in config/packages/security.yaml
      *
-     * @Route("/logout", name="security_logout")
      *
      * @throws \Exception
      */
+    #[Route(path: '/logout', name: 'security_logout')]
     public function logout(): void
     {
         throw new \Exception('This should never be reached!');
