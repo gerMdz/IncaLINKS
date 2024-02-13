@@ -44,3 +44,4 @@ docker-compose.yml.dist
 ###> phpstan/phpstan ###
 phpstan.neon
 ###< phpstan/phpstan ###
+/tools/php-cs-fixer/vendor/

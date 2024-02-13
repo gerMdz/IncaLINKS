@@ -17,7 +17,7 @@ return static function (RectorConfig $rectorConfig): void {
         __DIR__ . '/public',
         __DIR__ . '/src',
         __DIR__ . '/tests',
-//        __DIR__ . '/tools',
+        __DIR__ . '/tools',
     ]);
 
     // register a single rule
@@ -25,12 +25,12 @@ return static function (RectorConfig $rectorConfig): void {
 
     // define sets of rules
     $rectorConfig->sets([
-        LevelSetList::UP_TO_PHP_74
+//        LevelSetList::UP_TO_PHP_74
 //        DoctrineSetList::ANNOTATIONS_TO_ATTRIBUTES,
 //        SymfonySetList::ANNOTATIONS_TO_ATTRIBUTES,
 //        SensiolabsSetList::ANNOTATIONS_TO_ATTRIBUTES
 
-//        SymfonySetList::SYMFONY_54,
+        SymfonySetList::SYMFONY_54,
 //        SymfonySetList::SYMFONY_CODE_QUALITY,
 //        SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION,
     ]);
