@@ -13,25 +13,26 @@ class EnlaceCorto
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    private $id;
+    #[ORM\Column()]
+    private ?int $id = null;
 
     /**
      * @Gedmo\Slug(fields={"enlace"})
      */
-    #[ORM\Column(type: 'string', length: 150, unique: true, nullable: true)]
+    #[ORM\Column(length: 150, unique: true, nullable: true)]
     #[Groups('enlace_get')]
-    private $enlace;
+    private ?string $enlace = null;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column( length: 255)]
     #[Groups('enlace_get')]
-    private $linkRoute;
+    private ?string $linkRoute = null;
 
-    #[ORM\ManyToOne(targetEntity: Organization::class, inversedBy: 'enlaces')]
-    private $owner;
+    #[ORM\ManyToOne(inversedBy: 'enlaces')]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?Organization $owner = null;
 
-    #[ORM\Column(type: 'boolean')]
-    private $isActive = true;
+    #[ORM\Column()]
+    private bool $isActive = true;
 
     public function __construct()
     {

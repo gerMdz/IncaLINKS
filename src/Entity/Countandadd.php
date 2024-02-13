@@ -10,14 +10,14 @@ class Countandadd
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    private $id;
+    #[ORM\Column()]
+    private ?int $id = null;
 
-    #[ORM\Column(type: 'integer')]
-    private $totalPeople;
+    #[ORM\Column()]
+    private ?int $totalPeople = null;
 
-    #[ORM\Column(type: 'integer')]
-    private $totalPromises;
+    #[ORM\Column()]
+    private ?int $totalPromises = null;
 
     public function getId(): ?int
     {

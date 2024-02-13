@@ -14,10 +14,10 @@ class Organization
 {
     #[ORM\Id]
     #[ORM\Column(type: 'uuid', unique: true)]
-    private $id;
+    private ?string $id = null;
 
-    #[ORM\Column(type: 'string', length: 510)]
-    private $name;
+    #[ORM\Column(type: 'text', length: 510)]
+    private ?string $name;
 
     #[ORM\Column(type: 'string', length: 1020)]
     private $address;
@@ -145,9 +145,9 @@ class Organization
     }
 
     /**
-     * @return Collection|EnlaceCorto[]
+     * @return EnlaceCorto|ArrayCollection|Collection|array|null
      */
-    public function getEnlaces(): Collection
+    public function getEnlaces(): EnlaceCorto|ArrayCollection|Collection|array|null
     {
         return $this->enlaces;
     }
@@ -175,9 +175,9 @@ class Organization
     }
 
     /**
-     * @return Collection|User[]
+     * @return ArrayCollection|Collection|array|User|null
      */
-    public function getUsers(): Collection
+    public function getUsers(): ArrayCollection|Collection|array|User|null
     {
         return $this->users;
     }

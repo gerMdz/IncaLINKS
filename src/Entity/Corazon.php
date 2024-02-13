@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CorazonRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
@@ -11,52 +12,52 @@ class Corazon
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    private $id;
+    #[ORM\Column()]
+    private ?int $id = null;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $name;
+    #[ORM\Column(length: 255)]
+    private ?string $name = null;
 
-    #[ORM\Column(type: 'string', length: 150, unique: true)]
-    private $email;
+    #[ORM\Column(length: 150, unique: true)]
+    private ?string $email= null;
 
-    #[ORM\Column(type: 'float')]
-    private $promise;
+    #[ORM\Column()]
+    private ?float $promise = null;
 
     /**
-     * @var \DateTime
+     * @var DateTime|null
      *
      * @Gedmo\Timestampable(on="create")
      */
-    #[ORM\Column(type: 'datetime')]
-    private $created;
+    #[ORM\Column()]
+    private ?DateTime $created = null;
 
     /**
-     * @var \DateTime
+     * @var DateTime|null
      *
      * @Gedmo\Timestampable(on="update")
      */
     #[ORM\Column(type: 'datetime')]
-    private $updated;
+    private ?DateTime $updated = null;
 
     /**
-     * @var \DateTime
+     * @var DateTime|null
      *
      * @Gedmo\Timestampable(on="change", field={"promise"})
      */
     #[ORM\Column(name: 'content_changed', type: 'datetime', nullable: true)]
-    private $contentChanged;
+    private ?DateTime $contentChanged = null;
 
-    #[ORM\Column(type: 'integer')]
-    private $meses = 1;
+    #[ORM\Column()]
+    private ?int $meses = 1;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $apellido;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $apellido = null;
 
     public function __construct()
     {
-        $this->created = new \DateTime();
-        $this->updated = new \DateTime();
+        $this->created = new DateTime();
+        $this->updated = new DateTime();
     }
 
     public function getId(): ?int
@@ -100,17 +101,17 @@ class Corazon
         return $this;
     }
 
-    public function getCreated(): ?\DateTime
+    public function getCreated(): ?DateTime
     {
         return $this->created;
     }
 
-    public function getUpdated(): ?\DateTime
+    public function getUpdated(): ?DateTime
     {
         return $this->updated;
     }
 
-    public function getContentChanged(): ?\DateTime
+    public function getContentChanged(): ?DateTime
     {
         return $this->contentChanged;
     }

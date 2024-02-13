@@ -66,8 +66,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
     #[ORM\Column(type: 'json')]
     private $roles = [];
 
-    #[ORM\ManyToOne(targetEntity: Organization::class, inversedBy: 'users')]
-    private $organization;
+    #[ORM\ManyToOne(inversedBy: 'users')]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?Organization $organization = null;
 
     #[ORM\Column(type: 'boolean')]
     private $isActive;
