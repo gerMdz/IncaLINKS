@@ -1,3 +1,4 @@
+# see https://symfony.com/doc/current/reference/configuration/framework.html
 framework:
     secret: '%env(APP_SECRET)%'
     csrf_protection: true
@@ -11,6 +12,7 @@ framework:
         handler_id: session.handler.native_file
         cookie_secure: auto
         cookie_samesite: lax
+        storage_factory_id: session.storage.factory.native
 
     # When using the HTTP Cache, ESI allows to render page fragments separately
     # and with different cache configurations for each fragment
@@ -21,8 +23,10 @@ framework:
     php_errors:
         log: true
 
-    # The 'ide' option turns all of the file paths in an exception page
-    # into clickable links that open the given file using your favorite IDE.
-    # When 'ide' is set to null the file is opened in your web browser.
-    # See https://symfony.com/doc/current/reference/configuration/framework.html#ide
     ide: null
+
+when@test:
+    framework:
+        test: true
+        session:
+            storage_factory_id: session.storage.factory.mock_file
