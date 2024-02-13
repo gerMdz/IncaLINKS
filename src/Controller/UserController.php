@@ -23,8 +23,6 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 /**
  * Controller used to manage current user.
  *
- *
- *
  * @author Romain Monteil <monteil.romain@gmail.com>
  */
 #[Route(path: '/profile')]

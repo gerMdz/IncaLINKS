@@ -3,14 +3,12 @@
 namespace App\Entity;
 
 use App\Repository\CorazonRepository;
-use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity(repositoryClass: CorazonRepository::class)]
 class Corazon
 {
-    
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
@@ -43,7 +41,6 @@ class Corazon
 
     /**
      * @var \DateTime
-     *
      *
      * @Gedmo\Timestampable(on="change", field={"promise"})
      */

@@ -13,15 +13,24 @@ namespace App\Controller;
 
 use App\Repository\PostRepository;
 use App\Repository\TagRepository;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\Comment;
+use App\Entity\Post;
+use App\Entity\User;
+use App\Event\CommentCreatedEvent;
+use App\Form\CommentType;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\HttpKernel\Attribute\Cache;
+use Symfony\Component\Security\Http\Attribute\CurrentUser;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 /**
  * Controller used to manage blog contents in the public part of the site.
- *
  *
  * @author Ryan Weaver <weaverryan@gmail.com>
  * @author Javier Eguiluz <javier.eguiluz@gmail.com>
@@ -29,7 +38,6 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route(path: '/blog')]
 class BlogController extends AbstractController
 {
-    
     #[Route(path: '/', defaults: ['page' => '1', '_format' => 'html'], methods: 'GET', name: 'blog_index')]
     #[Route(path: '/rss.xml', defaults: ['page' => '1', '_format' => 'xml'], methods: 'GET', name: 'blog_rss')]
     #[Route(path: '/page/{page<[1-9]\d*>}', defaults: ['_format' => 'html'], methods: 'GET', name: 'blog_index_paginated')]

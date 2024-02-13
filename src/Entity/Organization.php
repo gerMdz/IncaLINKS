@@ -3,18 +3,15 @@
 namespace App\Entity;
 
 use App\Repository\OrganizationRepository;
-use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Uid\Uuid;
 
-
 #[ORM\Table(name: 'inca_organization')]
 #[ORM\Entity(repositoryClass: OrganizationRepository::class)]
 class Organization
 {
-    
     #[ORM\Id]
     #[ORM\Column(type: 'uuid', unique: true)]
     private $id;

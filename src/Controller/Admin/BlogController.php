@@ -12,15 +12,20 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Post;
+use App\Entity\User;
 use App\Form\PostType;
 use App\Repository\PostRepository;
 use App\Security\PostVoter;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\SubmitButton;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Requirement\Requirement;
+use Symfony\Component\Security\Http\Attribute\CurrentUser;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 /**
  * Controller used to manage blog contents in the backend.
@@ -30,8 +35,6 @@ use Symfony\Component\Routing\Annotation\Route;
  * existing bundles that let you generate ready-to-use backends without effort.
  *
  * See http://knpbundles.com/keyword/admin
- *
- *
  *
  * @author Ryan Weaver <weaverryan@gmail.com>
  * @author Javier Eguiluz <javier.eguiluz@gmail.com>
@@ -120,8 +123,6 @@ class BlogController extends AbstractController
 
     /**
      * Displays a form to edit an existing Post entity.
-     *
-     *
      */
     #[Route(path: '/{id<\d+>}/edit', methods: 'GET|POST', name: 'admin_post_edit')]
     #[IsGranted('edit', subject: 'post', message: 'Posts can only be edited by their authors.')]
@@ -146,8 +147,6 @@ class BlogController extends AbstractController
 
     /**
      * Deletes a Post entity.
-     *
-     *
      */
     #[Route(path: '/{id}/delete', methods: 'POST', name: 'admin_post_delete')]
     #[IsGranted('delete', subject: 'post')]

@@ -17,8 +17,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- *
- *
  * @author Ryan Weaver <weaverryan@gmail.com>
  * @author Javier Eguiluz <javier.eguiluz@gmail.com>
  */
@@ -28,9 +26,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
 {
     /**
      * @var int
-     *
-     *
-     *
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -39,8 +34,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
 
     /**
      * @var string
-     *
-     *
      */
     #[ORM\Column(type: 'string')]
     #[Assert\NotBlank]
@@ -48,9 +41,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
 
     /**
      * @var string
-     *
-     *
-     *
      */
     #[ORM\Column(type: 'string', unique: true, length: 150)]
     #[Assert\NotBlank]
@@ -59,8 +49,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
 
     /**
      * @var string
-     *
-     *
      */
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     #[Assert\Email]

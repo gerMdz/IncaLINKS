@@ -16,9 +16,9 @@
         "api-platform/core": "^2.6",
         "composer/package-versions-deprecated": "^1.8",
         "doctrine/annotations": "^1.0",
-        "doctrine/doctrine-bundle": "^1.12|^2.0",
-        "doctrine/doctrine-migrations-bundle": "^3.0",
-        "doctrine/orm": "^2.5.11",
+        "doctrine/doctrine-bundle": "^2.11",
+        "doctrine/doctrine-migrations-bundle": "^3.3",
+        "doctrine/orm": "^2.16",
         "easycorp/easyadmin-bundle": "^3.5",
         "erusev/parsedown": "^1.6",
         "gedmo/doctrine-extensions": "^3.0",
@@ -55,7 +55,9 @@
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/intl-extra": "^3.0",
         "twig/markdown-extra": "^3.0",
-        "twig/twig": "^2.12|^3.0"
+        "twig/twig": "^2.12|^3.0",
+        "doctrine/dbal": "^3.1",
+        "league/commonmark": "^2.1"
     },
     "require-dev": {
         "dama/doctrine-test-bundle": "^6.2",

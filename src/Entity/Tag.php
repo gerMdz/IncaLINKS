@@ -15,8 +15,6 @@ use Doctrine\ORM\Mapping as ORM;
 use JsonSerializable;
 
 /**
- *
- *
  * @author Yonel Ceruto <yonelceruto@gmail.com>
  */
 #[ORM\Table(name: 'inca_tag')]
@@ -25,9 +23,6 @@ class Tag implements \JsonSerializable
 {
     /**
      * @var int
-     *
-     *
-     *
      */
     #[ORM\Id]
     #[ORM\GeneratedValue]
