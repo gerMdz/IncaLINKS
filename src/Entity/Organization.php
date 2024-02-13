@@ -71,14 +71,13 @@ class Organization
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isActive;
+    private $isActive = true;
 
     public function __construct()
     {
         $this->id = Uuid::v4()->toRfc4122();
         $this->createdAt = new DateTime();
         $this->markAsUpdated();
-        $this->isActive = true;
         $this->enlaces = new ArrayCollection();
         $this->users = new ArrayCollection();
     }

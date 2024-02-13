@@ -90,8 +90,6 @@ class PostRepository extends ServiceEntityRepository
         $terms = array_unique($searchQuery->split(' '));
 
         // ignore the search terms that are too short
-        return array_filter($terms, function ($term) {
-            return 2 <= $term->length();
-        });
+        return array_filter($terms, fn($term) => 2 <= $term->length());
     }
 }

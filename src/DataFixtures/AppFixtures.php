@@ -14,7 +14,7 @@ namespace App\DataFixtures;
 use App\Entity\Comment;
 use App\Entity\Post;
 use App\Entity\Tag;
-use App\Entity\UserOld;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -42,7 +42,7 @@ class AppFixtures extends Fixture
     private function loadUsers(ObjectManager $manager): void
     {
         foreach ($this->getUserData() as [$fullname, $username, $password, $email, $roles]) {
-            $user = new UserOld();
+            $user = new User();
             $user->setFullName($fullname);
             $user->setUsername($username);
             $user->setPassword($this->passwordEncoder->encodePassword($user, $password));
@@ -236,6 +236,6 @@ MARKDOWN;
         shuffle($tagNames);
         $selectedTags = \array_slice($tagNames, 0, random_int(2, 4));
 
-        return array_map(function ($tagName) { return $this->getReference('tag-'.$tagName); }, $selectedTags);
+        return array_map(fn($tagName) => $this->getReference('tag-'.$tagName), $selectedTags);
     }
 }

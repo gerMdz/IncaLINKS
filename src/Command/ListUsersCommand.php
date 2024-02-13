@@ -97,15 +97,13 @@ HELP
         $allUsers = $this->users->findBy([], ['id' => 'DESC'], $maxResults);
 
         // Doctrine query returns an array of objects and we need an array of plain arrays
-        $usersAsPlainArrays = array_map(function (User $user) {
-            return [
-                $user->getId(),
-                $user->getFullName(),
-                $user->getUsername(),
-                $user->getEmail(),
-                implode(', ', $user->getRoles()),
-            ];
-        }, $allUsers);
+        $usersAsPlainArrays = array_map(fn(User $user) => [
+            $user->getId(),
+            $user->getFullName(),
+            $user->getUsername(),
+            $user->getEmail(),
+            implode(', ', $user->getRoles()),
+        ], $allUsers);
 
         // In your console commands you should always use the regular output type,
         // which outputs contents directly in the console window. However, this

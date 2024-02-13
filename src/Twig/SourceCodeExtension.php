@@ -121,15 +121,11 @@ class SourceCodeExtension extends AbstractExtension
     {
         $codeLines = u($code)->split("\n");
 
-        $indentedOrBlankLines = array_filter($codeLines, function ($lineOfCode) {
-            return u($lineOfCode)->isEmpty() || u($lineOfCode)->startsWith('    ');
-        });
+        $indentedOrBlankLines = array_filter($codeLines, fn($lineOfCode) => u($lineOfCode)->isEmpty() || u($lineOfCode)->startsWith('    '));
 
         $codeIsIndented = \count($indentedOrBlankLines) === \count($codeLines);
         if ($codeIsIndented) {
-            $unindentedLines = array_map(function ($lineOfCode) {
-                return u($lineOfCode)->after('    ');
-            }, $codeLines);
+            $unindentedLines = array_map(fn($lineOfCode) => u($lineOfCode)->after('    '), $codeLines);
             $code = u("\n")->join($unindentedLines);
         }
 
