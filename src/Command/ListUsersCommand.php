@@ -43,7 +43,9 @@ class ListUsersCommand extends Command
     protected static $defaultName = 'app:list-users';
 
     private $mailer;
+
     private $emailSender;
+
     private $users;
 
     public function __construct(MailerInterface $mailer, $emailSender, UserRepository $users)
@@ -55,9 +57,6 @@ class ListUsersCommand extends Command
         $this->users = $users;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configure(): void
     {
         $this
@@ -97,7 +96,7 @@ HELP
         $allUsers = $this->users->findBy([], ['id' => 'DESC'], $maxResults);
 
         // Doctrine query returns an array of objects and we need an array of plain arrays
-        $usersAsPlainArrays = array_map(fn(User $user) => [
+        $usersAsPlainArrays = array_map(fn (User $user) => [
             $user->getId(),
             $user->getFullName(),
             $user->getUsername(),

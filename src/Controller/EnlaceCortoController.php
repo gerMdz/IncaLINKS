@@ -19,10 +19,6 @@ class EnlaceCortoController extends AbstractController
 {
     /**
      * @Route("/enlaces", name="enlace_corto_index", methods={"GET"})
-     * @param EnlaceCortoRepository $enlaceCortoRepository
-     * @param PaginatorInterface $paginator
-     * @param Request $request
-     * @return Response
      */
     public function index(EnlaceCortoRepository $enlaceCortoRepository, PaginatorInterface $paginator, Request $request): Response
     {
@@ -34,7 +30,7 @@ class EnlaceCortoController extends AbstractController
         $enlaces_cortos_query = $enlaceCortoRepository->findAllEnlaces($search);
 
         $enlaces_cortos = $paginator->paginate(
-        // Consulta Doctrine, no resultados
+            // Consulta Doctrine, no resultados
             $enlaces_cortos_query,
             // Definir el parámetro de la página
             $request->query->getInt('page', 1),
@@ -72,9 +68,7 @@ class EnlaceCortoController extends AbstractController
 
     /**
      * @Route("/ingreso", name="page_login", methods={"GET"})
-     * @return RedirectResponse
      */
-
     public function loginPage(): RedirectResponse
     {
         return $this->redirectToRoute(
@@ -84,10 +78,7 @@ class EnlaceCortoController extends AbstractController
 
     /**
      * @Route("/{enlace}", name="enlace_corto_pagina", methods={"GET"})
-     * @param EnlaceCorto $enlaceCorto
-     * @return RedirectResponse
      */
-
     public function irEnlace(EnlaceCorto $enlaceCorto): RedirectResponse
     {
         return $this->redirect(
@@ -115,7 +106,6 @@ class EnlaceCortoController extends AbstractController
         );
     }
 
-
     /**
      * @Route("/enlaces/{id}/edit", name="enlace_corto_edit", methods={"GET","POST"})
      */
@@ -141,7 +131,7 @@ class EnlaceCortoController extends AbstractController
      */
     public function delete(Request $request, EnlaceCorto $enlaceCorto): Response
     {
-        if ($this->isCsrfTokenValid('delete' . $enlaceCorto->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$enlaceCorto->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($enlaceCorto);
             $entityManager->flush();

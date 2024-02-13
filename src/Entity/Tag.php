@@ -16,6 +16,7 @@ use JsonSerializable;
 
 /**
  * @ORM\Entity()
+ *
  * @ORM\Table(name="inca_tag")
  *
  * Defines the properties of the Tag entity to represent the post tags.
@@ -24,13 +25,15 @@ use JsonSerializable;
  *
  * @author Yonel Ceruto <yonelceruto@gmail.com>
  */
-class Tag implements JsonSerializable
+class Tag implements \JsonSerializable
 {
     /**
      * @var int
      *
      * @ORM\Id
+     *
      * @ORM\GeneratedValue
+     *
      * @ORM\Column(type="integer")
      */
     private $id;
@@ -57,9 +60,6 @@ class Tag implements JsonSerializable
         return $this->name;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function jsonSerialize(): string
     {
         // This entity implements JsonSerializable (http://php.net/manual/en/class.jsonserializable.php)

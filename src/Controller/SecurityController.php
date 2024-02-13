@@ -11,7 +11,6 @@
 
 namespace App\Controller;
 
-use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,7 +22,9 @@ use Symfony\Component\Security\Http\Util\TargetPathTrait;
 /**
  * Controller used to manage the application security.
  * See https://symfony.com/doc/current/security/form_login_setup.html.
+ *
  * @Route("/ingreso")
+ *
  * @author Ryan Weaver <weaverryan@gmail.com>
  * @author Javier Eguiluz <javier.eguiluz@gmail.com>
  */
@@ -62,10 +63,11 @@ class SecurityController extends AbstractController
      * and handle the logout automatically. See logout in config/packages/security.yaml
      *
      * @Route("/logout", name="security_logout")
-     * @throws Exception
+     *
+     * @throws \Exception
      */
     public function logout(): void
     {
-        throw new Exception('This should never be reached!');
+        throw new \Exception('This should never be reached!');
     }
 }

@@ -19,11 +19,13 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
+
 use function Symfony\Component\String\u;
 
 class AppFixtures extends Fixture
 {
     private $passwordEncoder;
+
     private $slugger;
 
     public function __construct(UserPasswordEncoderInterface $passwordEncoder, SluggerInterface $slugger)
@@ -236,6 +238,6 @@ MARKDOWN;
         shuffle($tagNames);
         $selectedTags = \array_slice($tagNames, 0, random_int(2, 4));
 
-        return array_map(fn($tagName) => $this->getReference('tag-'.$tagName), $selectedTags);
+        return array_map(fn ($tagName) => $this->getReference('tag-'.$tagName), $selectedTags);
     }
 }

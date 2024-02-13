@@ -14,7 +14,9 @@ class Corazon
 {
     /**
      * @ORM\Id
+     *
      * @ORM\GeneratedValue
+     *
      * @ORM\Column(type="integer")
      */
     private $id;
@@ -34,28 +36,29 @@ class Corazon
      */
     private $promise;
 
-
-
     /**
-     * @var DateTime $created
+     * @var \DateTime
      *
      * @Gedmo\Timestampable(on="create")
+     *
      * @ORM\Column(type="datetime")
      */
     private $created;
 
     /**
-     * @var DateTime $updated
+     * @var \DateTime
      *
      * @Gedmo\Timestampable(on="update")
+     *
      * @ORM\Column(type="datetime")
      */
     private $updated;
 
     /**
-     * @var DateTime $contentChanged
+     * @var \DateTime
      *
      * @ORM\Column(name="content_changed", type="datetime", nullable=true)
+     *
      * @Gedmo\Timestampable(on="change", field={"promise"})
      */
     private $contentChanged;
@@ -72,8 +75,8 @@ class Corazon
 
     public function __construct()
     {
-        $this->created = new DateTime();
-        $this->updated = new DateTime();
+        $this->created = new \DateTime();
+        $this->updated = new \DateTime();
     }
 
     public function getId(): ?int
@@ -117,26 +120,17 @@ class Corazon
         return $this;
     }
 
-    /**
-     * @return DateTime
-     */
-    public function getCreated(): ?DateTime
+    public function getCreated(): ?\DateTime
     {
         return $this->created;
     }
 
-    /**
-     * @return DateTime
-     */
-    public function getUpdated(): ?DateTime
+    public function getUpdated(): ?\DateTime
     {
         return $this->updated;
     }
 
-    /**
-     * @return DateTime|null
-     */
-    public function getContentChanged(): ?DateTime
+    public function getContentChanged(): ?\DateTime
     {
         return $this->contentChanged;
     }
@@ -164,5 +158,4 @@ class Corazon
 
         return $this;
     }
-
 }

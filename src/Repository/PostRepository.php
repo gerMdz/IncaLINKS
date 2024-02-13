@@ -16,6 +16,7 @@ use App\Entity\Tag;
 use App\Pagination\Paginator;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+
 use function Symfony\Component\String\u;
 
 /**
@@ -35,7 +36,7 @@ class PostRepository extends ServiceEntityRepository
         parent::__construct($registry, Post::class);
     }
 
-    public function findLatest(int $page = 1, Tag $tag = null): Paginator
+    public function findLatest(int $page = 1, ?Tag $tag = null): Paginator
     {
         $qb = $this->createQueryBuilder('p')
             ->addSelect('a', 't')
@@ -90,6 +91,6 @@ class PostRepository extends ServiceEntityRepository
         $terms = array_unique($searchQuery->split(' '));
 
         // ignore the search terms that are too short
-        return array_filter($terms, fn($term) => 2 <= $term->length());
+        return array_filter($terms, fn ($term) => 2 <= $term->length());
     }
 }

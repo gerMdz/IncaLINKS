@@ -2,7 +2,6 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Corazon;
 use App\Entity\Countandadd;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -13,17 +12,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AdminDashboardController extends AbstractDashboardController
 {
-
     private $base_name_site;
 
-    /**
-     * @param string $base_name_site
-     */
-    public function __construct(string $base_name_site){
-
+    public function __construct(string $base_name_site)
+    {
         $this->base_name_site = $base_name_site;
     }
-
 
     /**
      * @Route("/admin", name="admin")
@@ -31,8 +25,8 @@ class AdminDashboardController extends AbstractDashboardController
     public function index(): Response
     {
         $routeBuilder = $this->get(AdminUrlGenerator::class);
-        return $this->redirect($routeBuilder->setController(CorazonCrudController::class)->generateUrl());
 
+        return $this->redirect($routeBuilder->setController(CorazonCrudController::class)->generateUrl());
     }
 
     public function configureDashboard(): Dashboard
@@ -43,7 +37,7 @@ class AdminDashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-//        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+        //        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Corazones', 'fas fa-heart text-primary', Countandadd::class);
     }
 }

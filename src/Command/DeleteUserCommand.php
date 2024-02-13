@@ -43,8 +43,11 @@ class DeleteUserCommand extends Command
 
     /** @var SymfonyStyle */
     private $io;
+
     private $entityManager;
+
     private $validator;
+
     private $users;
 
     public function __construct(EntityManagerInterface $em, Validator $validator, UserRepository $users)
@@ -56,9 +59,6 @@ class DeleteUserCommand extends Command
         $this->users = $users;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configure(): void
     {
         $this

@@ -4,8 +4,6 @@ namespace App\Entity;
 
 use App\Repository\OrganizationRepository;
 use DateTime;
-use DateTimeImmutable;
-use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -13,12 +11,14 @@ use Symfony\Component\Uid\Uuid;
 
 /**
  * @ORM\Entity(repositoryClass=OrganizationRepository::class)
+ *
  * @ORM\Table(name="inca_organization")
  */
 class Organization
 {
     /**
      * @ORM\Id
+     *
      * @ORM\Column(type="uuid", unique=true)
      */
     private $id;
@@ -76,7 +76,7 @@ class Organization
     public function __construct()
     {
         $this->id = Uuid::v4()->toRfc4122();
-        $this->createdAt = new DateTime();
+        $this->createdAt = new \DateTime();
         $this->markAsUpdated();
         $this->enlaces = new ArrayCollection();
         $this->users = new ArrayCollection();
@@ -123,24 +123,24 @@ class Organization
         return $this;
     }
 
-    public function getCreatedAt(): DateTime
+    public function getCreatedAt(): \DateTime
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(DateTimeImmutable $createdAt): self
+    public function setCreatedAt(\DateTimeImmutable $createdAt): self
     {
         $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getUpdatedAt(): ?DateTimeInterface
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(DateTimeInterface $updatedAt): self
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
 
@@ -233,7 +233,7 @@ class Organization
 
     private function markAsUpdated()
     {
-        $this->updatedAt = new DateTime();
+        $this->updatedAt = new \DateTime();
     }
 
     public function getIsActive(): ?bool
@@ -247,6 +247,4 @@ class Organization
 
         return $this;
     }
-
-
 }

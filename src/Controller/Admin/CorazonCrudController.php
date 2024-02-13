@@ -2,7 +2,6 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Corazon;
 use App\Entity\Countandadd;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
@@ -15,7 +14,6 @@ class CorazonCrudController extends AbstractCrudController
     {
         return Countandadd::class;
     }
-
 
     public function configureFields(string $pageName): iterable
     {
@@ -30,5 +28,4 @@ class CorazonCrudController extends AbstractCrudController
             NumberField::new('totalPromises', 'Promesas'),
         ];
     }
-
 }

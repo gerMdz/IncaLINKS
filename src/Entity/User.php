@@ -12,13 +12,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Serializable;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ *
  * @ORM\Table(name="inca_user")
  *
  * Defines the properties of the User entity to represent the application users.
@@ -30,13 +30,15 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @author Ryan Weaver <weaverryan@gmail.com>
  * @author Javier Eguiluz <javier.eguiluz@gmail.com>
  */
-class User implements UserInterface, PasswordAuthenticatedUserInterface, Serializable
+class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serializable
 {
     /**
      * @var int
      *
      * @ORM\Id
+     *
      * @ORM\GeneratedValue
+     *
      * @ORM\Column(type="integer")
      */
     private $id;
@@ -45,6 +47,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
      * @var string
      *
      * @ORM\Column(type="string")
+     *
      * @Assert\NotBlank()
      */
     private $fullName;
@@ -53,7 +56,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
      * @var string
      *
      * @ORM\Column(type="string", unique=true, length=150)
+     *
      * @Assert\NotBlank()
+     *
      * @Assert\Length(min=2, max=50)
      */
     private $username;
@@ -62,6 +67,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
      * @var string
      *
      * @ORM\Column(type="string", length=180, unique=true)
+     *
      * @Assert\Email()
      */
     private $email;
@@ -121,7 +127,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
     }
 
     /**
-     * @param string $email
      * @return $this
      */
     public function setEmail(string $email): self
@@ -130,8 +135,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
 
         return $this;
     }
-
-
 
     /**
      * A visual identifier that represents this user.
@@ -142,8 +145,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
     {
         return $this->username;
     }
-
-
 
     /**
      * Returns the roles or permissions granted to the user for security.
@@ -161,7 +162,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
     }
 
     /**
-     * @param array $roles
      * @return $this
      */
     public function setRoles(array $roles): self
@@ -170,7 +170,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
 
         return $this;
     }
-
 
     /**
      * @see PasswordAuthenticatedUserInterface
@@ -186,6 +185,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
 
         return $this;
     }
+
     /**
      * Returns the salt that was originally used to encode the password.
      *
@@ -211,18 +211,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, Seriali
         // $this->plainPassword = null;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function serialize(): string
     {
         // add $this->salt too if you don't use Bcrypt or Argon2i
         return serialize([$this->id, $this->username, $this->password]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function unserialize($data): void
     {
         // add $this->salt too if you don't use Bcrypt or Argon2i

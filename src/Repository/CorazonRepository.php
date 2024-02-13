@@ -4,8 +4,6 @@ namespace App\Repository;
 
 use App\Entity\Corazon;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\NonUniqueResultException;
-use Doctrine\ORM\NoResultException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -23,8 +21,6 @@ class CorazonRepository extends ServiceEntityRepository
         parent::__construct($registry, Corazon::class);
     }
 
-    /**
-     */
     public function add(Corazon $entity, bool $flush = true): void
     {
         $this->_em->persist($entity);
@@ -33,8 +29,6 @@ class CorazonRepository extends ServiceEntityRepository
         }
     }
 
-    /**
-     */
     public function remove(Corazon $entity, bool $flush = true): void
     {
         $this->_em->remove($entity);
@@ -43,8 +37,6 @@ class CorazonRepository extends ServiceEntityRepository
         }
     }
 
-    /**
-     */
     public function countCorazones()
     {
         return $this->createQueryBuilder('corazon')

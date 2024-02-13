@@ -27,8 +27,11 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class CommentNotificationSubscriber implements EventSubscriberInterface
 {
     private $mailer;
+
     private $translator;
+
     private $urlGenerator;
+
     private $sender;
 
     public function __construct(MailerInterface $mailer, UrlGeneratorInterface $urlGenerator, TranslatorInterface $translator, $sender)

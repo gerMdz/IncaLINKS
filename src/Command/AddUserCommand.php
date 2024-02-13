@@ -24,6 +24,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Stopwatch\Stopwatch;
+
 use function Symfony\Component\String\u;
 
 /**
@@ -58,8 +59,11 @@ class AddUserCommand extends Command
     private $io;
 
     private $entityManager;
+
     private $passwordEncoder;
+
     private $validator;
+
     private $users;
 
     public function __construct(EntityManagerInterface $em, UserPasswordHasherInterface $encoder, Validator $validator, UserRepository $users)
@@ -72,9 +76,6 @@ class AddUserCommand extends Command
         $this->users = $users;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function configure(): void
     {
         $this
@@ -198,7 +199,7 @@ class AddUserCommand extends Command
         $this->entityManager->persist($user);
         $this->entityManager->flush();
 
-        $this->io->success(sprintf('%s was successfully created: %s (%s)', $isAdmin ? $isAdmin . ' user' : 'User', $user->getUsername(), $user->getEmail()));
+        $this->io->success(sprintf('%s was successfully created: %s (%s)', $isAdmin ? $isAdmin.' user' : 'User', $user->getUsername(), $user->getEmail()));
 
         $event = $stopwatch->stop('add-user-command');
         if ($output->isVerbose()) {
