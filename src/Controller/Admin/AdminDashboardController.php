@@ -13,9 +13,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminDashboardController extends AbstractDashboardController
 {
     private $base_name_site;
-    private \EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator $adminUrlGenerator;
 
-    public function __construct(string $base_name_site, \EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator $adminUrlGenerator)
+    private AdminUrlGenerator $adminUrlGenerator;
+
+    public function __construct(string $base_name_site, AdminUrlGenerator $adminUrlGenerator)
     {
         $this->base_name_site = $base_name_site;
         $this->adminUrlGenerator = $adminUrlGenerator;
