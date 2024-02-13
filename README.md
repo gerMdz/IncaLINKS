@@ -78,3 +78,5 @@ Con licencia [MIT](https://github.com/gerMdz/incalinks/blob/main/LICENCE)
 [2]: https://symfony.com/doc/current/reference/requirements.html
 [3]: https://symfony.com/doc/current/cookbook/configuration/web_server_configuration.html
 [4]: https://symfony.com/download
+
+[UPGRADE CAP 11]
