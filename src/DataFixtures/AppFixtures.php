@@ -17,7 +17,7 @@ use App\Entity\Tag;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 use function Symfony\Component\String\u;
@@ -28,7 +28,7 @@ class AppFixtures extends Fixture
 
     private $slugger;
 
-    public function __construct(UserPasswordEncoderInterface $passwordEncoder, SluggerInterface $slugger)
+    public function __construct(UserPasswordHasherInterface $passwordEncoder, SluggerInterface $slugger)
     {
         $this->passwordEncoder = $passwordEncoder;
         $this->slugger = $slugger;
@@ -47,7 +47,7 @@ class AppFixtures extends Fixture
             $user = new User();
             $user->setFullName($fullname);
             $user->setUsername($username);
-            $user->setPassword($this->passwordEncoder->encodePassword($user, $password));
+            $user->setPassword($this->passwordEncoder->hashPassword($user, $password));
             $user->setEmail($email);
             $user->setRoles($roles);
 

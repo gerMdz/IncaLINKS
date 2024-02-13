@@ -31,7 +31,7 @@ return static function (RectorConfig $rectorConfig): void {
 //        SensiolabsSetList::ANNOTATIONS_TO_ATTRIBUTES
 
         SymfonySetList::SYMFONY_54,
-//        SymfonySetList::SYMFONY_CODE_QUALITY,
-//        SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION,
+        SymfonySetList::SYMFONY_CODE_QUALITY,
+        SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION,
     ]);
 };
