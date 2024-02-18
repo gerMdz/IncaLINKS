@@ -24,27 +24,18 @@ class Corazon
     #[ORM\Column()]
     private ?float $promise = null;
 
-    /**
-     * @var DateTime|null
-     *
-     * @Gedmo\Timestampable(on="create")
-     */
+
+    #[Gedmo\Timestampable(on: 'create')]
     #[ORM\Column()]
     private ?DateTime $created = null;
 
-    /**
-     * @var DateTime|null
-     *
-     * @Gedmo\Timestampable(on="update")
-     */
+
+    #[Gedmo\Timestampable(on: 'update')]
     #[ORM\Column(type: 'datetime')]
     private ?DateTime $updated = null;
 
-    /**
-     * @var DateTime|null
-     *
-     * @Gedmo\Timestampable(on="change", field={"promise"})
-     */
+
+    #[Gedmo\Timestampable(on: 'change', field: ['promise'])]
     #[ORM\Column(name: 'content_changed', type: 'datetime', nullable: true)]
     private ?DateTime $contentChanged = null;
 

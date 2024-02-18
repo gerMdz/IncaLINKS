@@ -16,9 +16,7 @@ class EnlaceCorto
     #[ORM\Column()]
     private ?int $id = null;
 
-    /**
-     * @Gedmo\Slug(fields={"enlace"})
-     */
+    #[Gedmo\Slug(fields: ['enlace'])]
     #[ORM\Column(length: 150, unique: true, nullable: true)]
     #[Groups('enlace_get')]
     private ?string $enlace = null;
