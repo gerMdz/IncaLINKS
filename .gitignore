@@ -38,6 +38,7 @@ docker-compose.yml.dist
 ###> friendsofphp/php-cs-fixer ###
 /.php-cs-fixer.php
 /.php-cs-fixer.cache
+/.php-cs-fixer.dist_1.php
 ###< friendsofphp/php-cs-fixer ###
 
 ###> phpstan/phpstan ###
