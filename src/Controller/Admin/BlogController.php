@@ -16,11 +16,12 @@ use App\Entity\User;
 use App\Form\PostType;
 use App\Repository\PostRepository;
 use App\Security\PostVoter;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 /**
@@ -63,7 +64,7 @@ class BlogController extends AbstractController
      * Creates a new Post entity.
      */
     #[Route(path: '/new', methods: 'GET|POST', name: 'admin_post_new')]
-    public function new(Request $request): Response
+    public function new(Request $request, EntityManagerInterface $em): Response
     {
         $post = new Post();
         $post->setAuthor($this->getUser());
@@ -79,7 +80,6 @@ class BlogController extends AbstractController
         // However, we explicitly add it to improve code readability.
         // See https://symfony.com/doc/current/forms.html#processing-forms
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
             $em->persist($post);
             $em->flush();
 
@@ -122,13 +122,13 @@ class BlogController extends AbstractController
      */
     #[Route(path: '/{id<\d+>}/edit', methods: 'GET|POST', name: 'admin_post_edit')]
     #[IsGranted('edit', subject: 'post', message: 'Posts can only be edited by their authors.')]
-    public function edit(Request $request, Post $post): Response
+    public function edit(Request $request, Post $post, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $entityManager->flush();
 
             $this->addFlash('success', 'post.updated_successfully');
 
@@ -146,7 +146,7 @@ class BlogController extends AbstractController
      */
     #[Route(path: '/{id}/delete', methods: 'POST', name: 'admin_post_delete')]
     #[IsGranted('delete', subject: 'post')]
-    public function delete(Request $request, Post $post): Response
+    public function delete(Request $request, Post $post, EntityManagerInterface $em): Response
     {
         if (!$this->isCsrfTokenValid('delete', $request->request->get('token'))) {
             return $this->redirectToRoute('admin_post_index');
@@ -157,7 +157,6 @@ class BlogController extends AbstractController
         // because foreign key support is not enabled by default in SQLite
         $post->getTags()->clear();
 
-        $em = $this->getDoctrine()->getManager();
         $em->remove($post);
         $em->flush();
 

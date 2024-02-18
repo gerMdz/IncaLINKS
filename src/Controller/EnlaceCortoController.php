@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\EnlaceCorto;
 use App\Form\EnlaceCortoType;
 use App\Repository\EnlaceCortoRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -40,14 +41,13 @@ class EnlaceCortoController extends AbstractController
     }
 
     #[Route(path: '/enlaces/new', name: 'enlace_corto_new', methods: ['GET', 'POST'])]
-    public function new(Request $request): Response
+    public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $enlaceCorto = new EnlaceCorto();
         $form = $this->createForm(EnlaceCortoType::class, $enlaceCorto);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($enlaceCorto);
             $entityManager->flush();
 
@@ -93,13 +93,13 @@ class EnlaceCortoController extends AbstractController
     }
 
     #[Route(path: '/enlaces/{id}/edit', name: 'enlace_corto_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, EnlaceCorto $enlaceCorto): Response
+    public function edit(Request $request, EnlaceCorto $enlaceCorto, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(EnlaceCortoType::class, $enlaceCorto);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $entityManager->flush();
 
             return $this->redirectToRoute('enlace_corto_index');
         }
@@ -111,10 +111,9 @@ class EnlaceCortoController extends AbstractController
     }
 
     #[Route(path: '/enlaces/{id}', name: 'enlace_corto_delete', methods: ['DELETE'])]
-    public function delete(Request $request, EnlaceCorto $enlaceCorto): Response
+    public function delete(Request $request, EnlaceCorto $enlaceCorto, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$enlaceCorto->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($enlaceCorto);
             $entityManager->flush();
         }

@@ -1,13 +1,13 @@
 security:
-    enable_authenticator_manager: false
-#    enable_authenticator_manager: true
+#    enable_authenticator_manager: false
+    enable_authenticator_manager: true
 #    password_hashers:
-    encoders:
+#    encoders:
         # Our user class and the algorithm we'll use to encode passwords
         # 'auto' means to let Symfony choose the best possible password hasher (Argon2 or Bcrypt)
         # https://symfony.com/doc/current/security.html#c-encoding-passwords
-        App\Entity\User:
-            algorithm: auto
+#        App\Entity\User:
+#            algorithm: auto
 
 
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
@@ -39,7 +39,7 @@ security:
 
             # but the firewall does not require login on every page
             # denying access is done in access_control or in your controllers
-            anonymous: true
+#            anonymous: true
             lazy: true
 
           # activate different ways to authenticate
@@ -63,7 +63,8 @@ security:
                 login_path: security_login
                 # Secure the login form against CSRF
                 # Reference: https://symfony.com/doc/current/security/csrf.html#csrf-protection-in-login-forms
-                csrf_token_generator: security.csrf.token_manager
+#                csrf_token_generator: security.csrf.token_manager
+                enable_csrf: true
                 # The page users are redirect to when there is no previous page stored in the
                 # session (for example when the users access directly to the login page).
                 default_target_path: enlaces_index
