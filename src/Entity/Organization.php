@@ -17,7 +17,7 @@ class Organization
     private ?string $id = null;
 
     #[ORM\Column(type: 'text', length: 510)]
-    private ?string $name;
+    private ?string $name = null;
 
     #[ORM\Column(type: 'string', length: 1020)]
     private $address;

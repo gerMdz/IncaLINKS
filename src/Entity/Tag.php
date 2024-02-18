@@ -19,7 +19,7 @@ use JsonSerializable;
  */
 #[ORM\Table(name: 'inca_tag')]
 #[ORM\Entity]
-class Tag implements \JsonSerializable
+class Tag implements \JsonSerializable, \Stringable
 {
     /**
      * @var int

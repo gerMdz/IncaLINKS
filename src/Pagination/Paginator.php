@@ -28,20 +28,14 @@ class Paginator
      */
     public const PAGE_SIZE = 10;
 
-    private $queryBuilder;
-
     private $currentPage;
-
-    private $pageSize;
 
     private $results;
 
     private $numResults;
 
-    public function __construct(DoctrineQueryBuilder $queryBuilder, int $pageSize = self::PAGE_SIZE)
+    public function __construct(private readonly DoctrineQueryBuilder $queryBuilder, private readonly int $pageSize = self::PAGE_SIZE)
     {
-        $this->queryBuilder = $queryBuilder;
-        $this->pageSize = $pageSize;
     }
 
     public function paginate(int $page = 1): self

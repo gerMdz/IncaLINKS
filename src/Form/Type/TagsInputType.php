@@ -30,11 +30,8 @@ use Symfony\Component\Form\FormView;
  */
 class TagsInputType extends AbstractType
 {
-    private $tags;
-
-    public function __construct(TagRepository $tags)
+    public function __construct(private readonly TagRepository $tags)
     {
-        $this->tags = $tags;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options): void

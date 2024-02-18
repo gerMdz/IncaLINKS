@@ -47,34 +47,18 @@ use function Symfony\Component\String\u;
  * @author Javier Eguiluz <javier.eguiluz@gmail.com>
  * @author Yonel Ceruto <yonelceruto@gmail.com>
  */
+#[\Symfony\Component\Console\Attribute\AsCommand('app:add-user')]
 class AddUserCommand extends Command
 {
-    // to make your command lazily loaded, configure the $defaultName static property,
-    // so it will be instantiated only when the command is actually called.
-    protected static $defaultName = 'app:add-user';
-
     /**
      * @var SymfonyStyle
      */
     private $io;
 
-    private $entityManager;
-
-    private $passwordEncoder;
-
-    private $validator;
-
-    private $users;
-
-    public function __construct(EntityManagerInterface $em, UserPasswordHasherInterface $encoder, Validator $validator,
-                                UserRepository         $users)
+    public function __construct(private readonly EntityManagerInterface $entityManager, private readonly UserPasswordHasherInterface $passwordEncoder, private readonly Validator $validator,
+                                private readonly UserRepository         $users)
     {
         parent::__construct();
-
-        $this->entityManager = $em;
-        $this->passwordEncoder = $encoder;
-        $this->validator = $validator;
-        $this->users = $users;
     }
 
     protected function configure(): void
@@ -134,7 +118,7 @@ class AddUserCommand extends Command
         if (null !== $username) {
             $this->io->text(' > <info>Username</info>: ' . $username);
         } else {
-            $username = $this->io->ask('Username', null, [$this->validator, 'validateUsername']);
+            $username = $this->io->ask('Username', null, $this->validator->validateUsername(...));
             $input->setArgument('username', $username);
         }
 
@@ -143,7 +127,7 @@ class AddUserCommand extends Command
         if (null !== $password) {
             $this->io->text(' > <info>Password</info>: ' . u('*')->repeat(u($password)->length()));
         } else {
-            $password = $this->io->askHidden('Password (your type will be hidden)', [$this->validator, 'validatePassword']);
+            $password = $this->io->askHidden('Password (your type will be hidden)', $this->validator->validatePassword(...));
             $input->setArgument('password', $password);
         }
 
@@ -152,7 +136,7 @@ class AddUserCommand extends Command
         if (null !== $email) {
             $this->io->text(' > <info>Email</info>: ' . $email);
         } else {
-            $email = $this->io->ask('Email', null, [$this->validator, 'validateEmail']);
+            $email = $this->io->ask('Email', null, $this->validator->validateEmail(...));
             $input->setArgument('email', $email);
         }
 
@@ -161,7 +145,7 @@ class AddUserCommand extends Command
         if (null !== $fullName) {
             $this->io->text(' > <info>Full Name</info>: ' . $fullName);
         } else {
-            $fullName = $this->io->ask('Full Name', null, [$this->validator, 'validateFullName']);
+            $fullName = $this->io->ask('Full Name', null, $this->validator->validateFullName(...));
             $input->setArgument('full-name', $fullName);
         }
     }
@@ -189,7 +173,7 @@ class AddUserCommand extends Command
         $user->setFullName($fullName);
         $user->setUsername($username);
         $user->setEmail($email);
-        $user->setRoles([$isAdmin ? 'ROLE_' . strtoupper($isAdmin) : 'ROLE_USER']);
+        $user->setRoles([$isAdmin ? 'ROLE_' . strtoupper((string) $isAdmin) : 'ROLE_USER']);
         $user->setIsActive(true);
 
         // See https://symfony.com/doc/current/security.html#c-encoding-passwords

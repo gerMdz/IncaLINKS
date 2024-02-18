@@ -7,11 +7,8 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ListCorazones
 {
-    private $countandaddRepository;
-
-    public function __construct(CountandaddRepository $countandaddRepository)
+    public function __construct(private readonly CountandaddRepository $countandaddRepository)
     {
-        $this->countandaddRepository = $countandaddRepository;
     }
 
     public function __invoke(): JsonResponse

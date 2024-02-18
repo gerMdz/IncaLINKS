@@ -29,16 +29,12 @@ use function Symfony\Component\String\u;
  */
 class RedirectToPreferredLocaleSubscriber implements EventSubscriberInterface
 {
-    private $urlGenerator;
-
     private $locales;
 
     private $defaultLocale;
 
-    public function __construct(UrlGeneratorInterface $urlGenerator, string $locales, ?string $defaultLocale = null)
+    public function __construct(private readonly UrlGeneratorInterface $urlGenerator, string $locales, ?string $defaultLocale = null)
     {
-        $this->urlGenerator = $urlGenerator;
-
         $this->locales = explode('|', trim($locales));
         if (empty($this->locales)) {
             throw new \UnexpectedValueException('The list of supported locales must not be empty.');

@@ -24,14 +24,8 @@ use function Symfony\Component\String\u;
 
 class AppFixtures extends Fixture
 {
-    private $passwordEncoder;
-
-    private $slugger;
-
-    public function __construct(UserPasswordHasherInterface $passwordEncoder, SluggerInterface $slugger)
+    public function __construct(private readonly UserPasswordHasherInterface $passwordEncoder, private readonly SluggerInterface $slugger)
     {
-        $this->passwordEncoder = $passwordEncoder;
-        $this->slugger = $slugger;
     }
 
     public function load(ObjectManager $manager): void

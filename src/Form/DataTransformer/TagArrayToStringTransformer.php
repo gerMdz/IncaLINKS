@@ -28,11 +28,8 @@ use function Symfony\Component\String\u;
  */
 class TagArrayToStringTransformer implements DataTransformerInterface
 {
-    private $tags;
-
-    public function __construct(TagRepository $tags)
+    public function __construct(private readonly TagRepository $tags)
     {
-        $this->tags = $tags;
     }
 
     public function transform($tags): string

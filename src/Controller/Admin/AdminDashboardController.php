@@ -12,14 +12,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AdminDashboardController extends AbstractDashboardController
 {
-    private $base_name_site;
-
-    private AdminUrlGenerator $adminUrlGenerator;
-
-    public function __construct(string $base_name_site, AdminUrlGenerator $adminUrlGenerator)
+    public function __construct(private readonly string $base_name_site, private AdminUrlGenerator $adminUrlGenerator)
     {
-        $this->base_name_site = $base_name_site;
-        $this->adminUrlGenerator = $adminUrlGenerator;
     }
 
     #[Route(path: '/admin', name: 'admin')]

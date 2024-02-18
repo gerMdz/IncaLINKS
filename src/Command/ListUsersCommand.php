@@ -37,24 +37,12 @@ use Symfony\Component\Mime\Email;
  *
  * @author Javier Eguiluz <javier.eguiluz@gmail.com>
  */
+#[\Symfony\Component\Console\Attribute\AsCommand('app:list-users')]
 class ListUsersCommand extends Command
 {
-    // a good practice is to use the 'app:' prefix to group all your custom application commands
-    protected static $defaultName = 'app:list-users';
-
-    private $mailer;
-
-    private $emailSender;
-
-    private $users;
-
-    public function __construct(MailerInterface $mailer, $emailSender, UserRepository $users)
+    public function __construct(private readonly MailerInterface $mailer, private $emailSender, private readonly UserRepository $users)
     {
         parent::__construct();
-
-        $this->mailer = $mailer;
-        $this->emailSender = $emailSender;
-        $this->users = $users;
     }
 
     protected function configure(): void

@@ -64,10 +64,10 @@ class BlogController extends AbstractController
         $results = [];
         foreach ($foundPosts as $post) {
             $results[] = [
-                'title' => htmlspecialchars($post->getTitle(), ENT_COMPAT | ENT_HTML5),
+                'title' => htmlspecialchars((string) $post->getTitle(), ENT_COMPAT | ENT_HTML5),
                 'date' => $post->getPublishedAt()->format('M d, Y'),
-                'author' => htmlspecialchars($post->getAuthor()->getFullName(), ENT_COMPAT | ENT_HTML5),
-                'summary' => htmlspecialchars($post->getSummary(), ENT_COMPAT | ENT_HTML5),
+                'author' => htmlspecialchars((string) $post->getAuthor()->getFullName(), ENT_COMPAT | ENT_HTML5),
+                'summary' => htmlspecialchars((string) $post->getSummary(), ENT_COMPAT | ENT_HTML5),
             ];
         }
 

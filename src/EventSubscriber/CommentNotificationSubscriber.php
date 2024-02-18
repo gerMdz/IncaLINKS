@@ -26,20 +26,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  */
 class CommentNotificationSubscriber implements EventSubscriberInterface
 {
-    private $mailer;
-
-    private $translator;
-
-    private $urlGenerator;
-
-    private $sender;
-
-    public function __construct(MailerInterface $mailer, UrlGeneratorInterface $urlGenerator, TranslatorInterface $translator, $sender)
+    public function __construct(private readonly MailerInterface $mailer, private readonly UrlGeneratorInterface $urlGenerator, private readonly TranslatorInterface $translator, private $sender)
     {
-        $this->mailer = $mailer;
-        $this->urlGenerator = $urlGenerator;
-        $this->translator = $translator;
-        $this->sender = $sender;
     }
 
     public static function getSubscribedEvents(): array
