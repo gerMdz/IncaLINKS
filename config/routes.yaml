@@ -15,3 +15,9 @@ homepage:
 login:
     path: /login
     controller: App\Controller\SecurityController::login
+
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
