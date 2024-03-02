@@ -17,7 +17,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\Cache;
-use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Controller used to manage blog contents in the public part of the site.
