@@ -19,6 +19,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 /**
  * Controller used to manage current user.
@@ -26,7 +27,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @author Romain Monteil <monteil.romain@gmail.com>
  */
 #[Route(path: '/profile')]
-#[\Symfony\Component\Security\Http\Attribute\IsGranted('ROLE_USER')]
+#[IsGranted('ROLE_USER')]
 class UserController extends AbstractController
 {
     #[Route(path: '/edit', name: 'user_edit', methods: 'GET|POST')]

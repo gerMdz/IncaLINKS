@@ -25,12 +25,12 @@ use Symfony\Component\Routing\Annotation\Route;
  * @author Ryan Weaver <weaverryan@gmail.com>
  * @author Javier Eguiluz <javier.eguiluz@gmail.com>
  */
-#[Route(path: '/blog')]
+#[\Symfony\Component\Routing\Attribute\Route(path: '/blog')]
 class BlogController extends AbstractController
 {
-    #[Route(path: '/', defaults: ['page' => '1', '_format' => 'html'], methods: 'GET', name: 'blog_index')]
-    #[Route(path: '/rss.xml', defaults: ['page' => '1', '_format' => 'xml'], methods: 'GET', name: 'blog_rss')]
-    #[Route(path: '/page/{page<[1-9]\d*>}', defaults: ['_format' => 'html'], methods: 'GET', name: 'blog_index_paginated')]
+    #[\Symfony\Component\Routing\Attribute\Route(path: '/', defaults: ['page' => '1', '_format' => 'html'], methods: 'GET', name: 'blog_index')]
+    #[\Symfony\Component\Routing\Attribute\Route(path: '/rss.xml', defaults: ['page' => '1', '_format' => 'xml'], methods: 'GET', name: 'blog_rss')]
+    #[\Symfony\Component\Routing\Attribute\Route(path: '/page/{page<[1-9]\d*>}', defaults: ['_format' => 'html'], methods: 'GET', name: 'blog_index_paginated')]
     #[Cache(smaxage: '10')]
     public function index(Request $request, int $page, string $_format, PostRepository $posts, TagRepository $tags): Response
     {
@@ -49,7 +49,7 @@ class BlogController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/search', methods: 'GET', name: 'blog_search')]
+    #[\Symfony\Component\Routing\Attribute\Route(path: '/search', methods: 'GET', name: 'blog_search')]
     public function search(Request $request, PostRepository $posts): Response
     {
         $query = $request->query->get('q', '');
