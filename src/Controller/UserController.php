@@ -28,10 +28,10 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
  * @author Romain Monteil <monteil.romain@gmail.com>
  */
 #[Route(path: '/profile')]
-#[IsGranted('ROLE_USER')]
+#[\Symfony\Component\Security\Http\Attribute\IsGranted('ROLE_USER')]
 class UserController extends AbstractController
 {
-    #[Route(path: '/edit', methods: 'GET|POST', name: 'user_edit')]
+    #[Route(path: '/edit', name: 'user_edit', methods: 'GET|POST')]
     public function edit(Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
@@ -50,11 +50,11 @@ class UserController extends AbstractController
 
         return $this->render('user/edit.html.twig', [
             'user' => $user,
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 
-    #[Route(path: '/change-password', methods: 'GET|POST', name: 'user_change_password')]
+    #[Route(path: '/change-password', name: 'user_change_password', methods: 'GET|POST')]
     public function changePassword(
         Request $request, UserPasswordHasherInterface $passwordHasherr, EntityManagerInterface $entityManager): Response
     {
@@ -72,7 +72,7 @@ class UserController extends AbstractController
         }
 
         return $this->render('user/change_password.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 }
