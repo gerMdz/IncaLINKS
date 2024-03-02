@@ -24,28 +24,23 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: \App\Repository\UserRepository::class)]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
-
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     private ?int $id = null;
 
-
     #[ORM\Column()]
     #[Assert\NotBlank]
     private ?string $fullName = null;
-
 
     #[ORM\Column(unique: true, length: 150)]
     #[Assert\NotBlank]
     #[Assert\Length(min: 2, max: 50)]
     private ?string $username = null;
 
-
     #[ORM\Column(length: 180, unique: true)]
     #[Assert\Email]
     private ?string $email = null;
-
 
     #[ORM\Column()]
     private ?string $password = null;
@@ -226,8 +221,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __unserialize(array $data): void
     {
-        $this->id       = $data['id'];
+        $this->id = $data['id'];
         $this->username = $data['username'];
-        $this->email    = $data['email'];
+        $this->email = $data['email'];
     }
 }

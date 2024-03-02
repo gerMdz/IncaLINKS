@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\CorazonRepository;
-use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
@@ -19,25 +18,22 @@ class Corazon
     private ?string $name = null;
 
     #[ORM\Column(length: 150, unique: true)]
-    private ?string $email= null;
+    private ?string $email = null;
 
     #[ORM\Column()]
     private ?float $promise = null;
 
-
     #[Gedmo\Timestampable(on: 'create')]
     #[ORM\Column()]
-    private ?DateTime $created = null;
-
+    private ?\DateTime $created = null;
 
     #[Gedmo\Timestampable(on: 'update')]
     #[ORM\Column()]
-    private ?DateTime $updated = null;
-
+    private ?\DateTime $updated = null;
 
     #[Gedmo\Timestampable(on: 'change', field: ['promise'])]
     #[ORM\Column(name: 'content_changed', nullable: true)]
-    private ?DateTime $contentChanged = null;
+    private ?\DateTime $contentChanged = null;
 
     #[ORM\Column()]
     private ?int $meses = 1;
@@ -47,8 +43,8 @@ class Corazon
 
     public function __construct()
     {
-        $this->created = new DateTime();
-        $this->updated = new DateTime();
+        $this->created = new \DateTime();
+        $this->updated = new \DateTime();
     }
 
     public function getId(): ?int
@@ -92,17 +88,17 @@ class Corazon
         return $this;
     }
 
-    public function getCreated(): ?DateTime
+    public function getCreated(): ?\DateTime
     {
         return $this->created;
     }
 
-    public function getUpdated(): ?DateTime
+    public function getUpdated(): ?\DateTime
     {
         return $this->updated;
     }
 
-    public function getContentChanged(): ?DateTime
+    public function getContentChanged(): ?\DateTime
     {
         return $this->contentChanged;
     }

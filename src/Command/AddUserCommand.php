@@ -56,7 +56,7 @@ class AddUserCommand extends Command
     private $io;
 
     public function __construct(private readonly EntityManagerInterface $entityManager, private readonly UserPasswordHasherInterface $passwordEncoder, private readonly Validator $validator,
-                                private readonly UserRepository         $users)
+        private readonly UserRepository $users)
     {
         parent::__construct();
     }
@@ -116,7 +116,7 @@ class AddUserCommand extends Command
         // Ask for the username if it's not defined
         $username = $input->getArgument('username');
         if (null !== $username) {
-            $this->io->text(' > <info>Username</info>: ' . $username);
+            $this->io->text(' > <info>Username</info>: '.$username);
         } else {
             $username = $this->io->ask('Username', null, $this->validator->validateUsername(...));
             $input->setArgument('username', $username);
@@ -125,7 +125,7 @@ class AddUserCommand extends Command
         // Ask for the password if it's not defined
         $password = $input->getArgument('password');
         if (null !== $password) {
-            $this->io->text(' > <info>Password</info>: ' . u('*')->repeat(u($password)->length()));
+            $this->io->text(' > <info>Password</info>: '.u('*')->repeat(u($password)->length()));
         } else {
             $password = $this->io->askHidden('Password (your type will be hidden)', $this->validator->validatePassword(...));
             $input->setArgument('password', $password);
@@ -134,7 +134,7 @@ class AddUserCommand extends Command
         // Ask for the email if it's not defined
         $email = $input->getArgument('email');
         if (null !== $email) {
-            $this->io->text(' > <info>Email</info>: ' . $email);
+            $this->io->text(' > <info>Email</info>: '.$email);
         } else {
             $email = $this->io->ask('Email', null, $this->validator->validateEmail(...));
             $input->setArgument('email', $email);
@@ -143,7 +143,7 @@ class AddUserCommand extends Command
         // Ask for the full name if it's not defined
         $fullName = $input->getArgument('full-name');
         if (null !== $fullName) {
-            $this->io->text(' > <info>Full Name</info>: ' . $fullName);
+            $this->io->text(' > <info>Full Name</info>: '.$fullName);
         } else {
             $fullName = $this->io->ask('Full Name', null, $this->validator->validateFullName(...));
             $input->setArgument('full-name', $fullName);
@@ -173,7 +173,7 @@ class AddUserCommand extends Command
         $user->setFullName($fullName);
         $user->setUsername($username);
         $user->setEmail($email);
-        $user->setRoles([$isAdmin ? 'ROLE_' . strtoupper((string) $isAdmin) : 'ROLE_USER']);
+        $user->setRoles([$isAdmin ? 'ROLE_'.strtoupper((string) $isAdmin) : 'ROLE_USER']);
         $user->setIsActive(true);
 
         // See https://symfony.com/doc/current/security.html#c-encoding-passwords
@@ -183,7 +183,7 @@ class AddUserCommand extends Command
         $this->entityManager->persist($user);
         $this->entityManager->flush();
 
-        $this->io->success(sprintf('%s was successfully created: %s (%s)', $isAdmin ? $isAdmin . ' user' : 'User', $user->getUsername(), $user->getEmail()));
+        $this->io->success(sprintf('%s was successfully created: %s (%s)', $isAdmin ? $isAdmin.' user' : 'User', $user->getUsername(), $user->getEmail()));
 
         $event = $stopwatch->stop('add-user-command');
         if ($output->isVerbose()) {

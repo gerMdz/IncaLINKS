@@ -3,8 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\OrganizationRepository;
-use DateTime;
-use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -24,14 +22,14 @@ class Organization
     #[ORM\Column(type: 'string', length: 1020)]
     private ?string $address = null;
 
-    #[ORM\Column( length: 10, unique: true, nullable: true)]
+    #[ORM\Column(length: 10, unique: true, nullable: true)]
     private ?string $identifier = null;
 
     #[ORM\Column()]
-    private ?DateTimeImmutable $createdAt;
+    private ?\DateTimeImmutable $createdAt;
 
     #[ORM\Column()]
-    private ?DateTime $updatedAt;
+    private ?\DateTime $updatedAt;
 
     #[ORM\Column()]
     private ?string $responsable = null;
@@ -51,7 +49,7 @@ class Organization
     public function __construct()
     {
         $this->id = Uuid::v4()->toRfc4122();
-        $this->createdAt = new DateTime();
+        $this->createdAt = new \DateTime();
         $this->markAsUpdated();
         $this->enlaces = new ArrayCollection();
         $this->users = new ArrayCollection();
@@ -98,12 +96,12 @@ class Organization
         return $this;
     }
 
-    public function getCreatedAt(): DateTime
+    public function getCreatedAt(): \DateTime
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(DateTimeImmutable $createdAt): self
+    public function setCreatedAt(\DateTimeImmutable $createdAt): self
     {
         $this->createdAt = $createdAt;
 
@@ -146,9 +144,6 @@ class Organization
         return $this;
     }
 
-    /**
-     * @return EnlaceCorto|ArrayCollection|Collection|array|null
-     */
     public function getEnlaces(): EnlaceCorto|ArrayCollection|Collection|array|null
     {
         return $this->enlaces;
@@ -176,9 +171,6 @@ class Organization
         return $this;
     }
 
-    /**
-     * @return ArrayCollection|Collection|array|User|null
-     */
     public function getUsers(): ArrayCollection|Collection|array|User|null
     {
         return $this->users;
@@ -208,7 +200,7 @@ class Organization
 
     private function markAsUpdated()
     {
-        $this->updatedAt = new DateTime();
+        $this->updatedAt = new \DateTime();
     }
 
     public function getIsActive(): ?bool
