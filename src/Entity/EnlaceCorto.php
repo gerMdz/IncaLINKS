@@ -21,7 +21,7 @@ class EnlaceCorto
     #[Groups('enlace_get')]
     private ?string $enlace = null;
 
-    #[ORM\Column( length: 255)]
+    #[ORM\Column()]
     #[Groups('enlace_get')]
     private ?string $linkRoute = null;
 

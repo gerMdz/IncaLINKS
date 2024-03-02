@@ -22,43 +22,33 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 #[ORM\Table(name: 'inca_user')]
 #[ORM\Entity(repositoryClass: \App\Repository\UserRepository::class)]
-class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serializable
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
-    /**
-     * @var int
-     */
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    private ?int $id = null;
 
-    /**
-     * @var string
-     */
-    #[ORM\Column(type: 'string')]
+
+    #[ORM\Column()]
     #[Assert\NotBlank]
-    private $fullName;
+    private ?string $fullName = null;
 
-    /**
-     * @var string
-     */
-    #[ORM\Column(type: 'string', unique: true, length: 150)]
+
+    #[ORM\Column(unique: true, length: 150)]
     #[Assert\NotBlank]
     #[Assert\Length(min: 2, max: 50)]
-    private $username;
+    private ?string $username = null;
 
-    /**
-     * @var string
-     */
-    #[ORM\Column(type: 'string', length: 180, unique: true)]
+
+    #[ORM\Column(length: 180, unique: true)]
     #[Assert\Email]
-    private $email;
+    private ?string $email = null;
 
-    /**
-     * @var string
-     */
-    #[ORM\Column(type: 'string')]
-    private $password;
+
+    #[ORM\Column()]
+    private ?string $password = null;
 
     /**
      * @var array
@@ -71,7 +61,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
     private ?Organization $organization = null;
 
     #[ORM\Column(type: 'boolean')]
-    private $isActive;
+    private ?bool $isActive;
 
     public function getId(): ?int
     {
@@ -151,7 +141,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
     /**
      * @see PasswordAuthenticatedUserInterface
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
@@ -222,5 +212,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \Serial
         $this->isActive = $isActive;
 
         return $this;
+    }
+
+    public function __serialize(): array
+    {
+        return [
+            'id' => $this->getId(),
+            'username' => $this->getUsername(),
+            'email' => $this->getEmail(),
+            'password' => $this->getPassword(),
+        ];
+    }
+
+    public function __unserialize(array $data): void
+    {
+        $this->id       = $data['id'];
+        $this->username = $data['username'];
+        $this->email    = $data['email'];
     }
 }

@@ -21,19 +21,15 @@ use JsonSerializable;
 #[ORM\Entity]
 class Tag implements \JsonSerializable, \Stringable
 {
-    /**
-     * @var int
-     */
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
-    private $id;
+    #[ORM\Column()]
+    private ?int $id = null;
 
-    /**
-     * @var string
-     */
-    #[ORM\Column(type: 'string', unique: true, length: 150)]
-    private $name;
+
+    #[ORM\Column(length: 150, unique: true)]
+    private ?string $name = null;
 
     public function getId(): ?int
     {

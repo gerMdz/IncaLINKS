@@ -11,6 +11,7 @@
 
 namespace App\Controller;
 
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,11 +32,11 @@ class SecurityController extends AbstractController
 {
     use TargetPathTrait;
 
-    #[Route(path: '/login', name: 'security_login')]
-    public function login(Request $request, Security $security, AuthenticationUtils $helper): Response
+    #[Route('/login', name: 'security_login')]
+    public function login(Request $request, AuthenticationUtils $helper): Response
     {
         // if user is already logged in, don't display the login page again
-        if ($security->isGranted('ROLE_USER')) {
+        if ($this->getUser()) {
             return $this->redirectToRoute('enlace_corto_index');
         }
 
@@ -59,11 +60,11 @@ class SecurityController extends AbstractController
      * But, this will never be executed. Symfony will intercept this first
      * and handle the logout automatically. See logout in config/packages/security.yaml
      *
-     * @throws \Exception
+     * @throws Exception
      */
     #[Route(path: '/logout', name: 'security_logout')]
     public function logout(): void
     {
-        throw new \Exception('This should never be reached!');
+        throw new Exception('This should never be reached!');
     }
 }

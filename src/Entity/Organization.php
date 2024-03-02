@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\OrganizationRepository;
+use DateTime;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -20,36 +22,36 @@ class Organization
     private ?string $name = null;
 
     #[ORM\Column(type: 'string', length: 1020)]
-    private $address;
+    private ?string $address = null;
 
-    #[ORM\Column(type: 'string', length: 10, unique: true, nullable: true)]
-    private $identifier;
+    #[ORM\Column( length: 10, unique: true, nullable: true)]
+    private ?string $identifier = null;
 
-    #[ORM\Column(type: 'datetime_immutable')]
-    private $createdAt;
+    #[ORM\Column()]
+    private ?DateTimeImmutable $createdAt;
 
-    #[ORM\Column(type: 'datetime')]
-    private $updatedAt;
+    #[ORM\Column()]
+    private ?DateTime $updatedAt;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $responsable;
+    #[ORM\Column()]
+    private ?string $responsable = null;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $email;
+    #[ORM\Column()]
+    private ?string $email = null;
 
     #[ORM\OneToMany(targetEntity: EnlaceCorto::class, mappedBy: 'owner')]
-    private $enlaces;
+    private EnlaceCorto $enlaces;
 
     #[ORM\OneToMany(targetEntity: User::class, mappedBy: 'organization')]
-    private $users;
+    private User $users;
 
-    #[ORM\Column(type: 'boolean')]
-    private $isActive = true;
+    #[ORM\Column()]
+    private bool $isActive = true;
 
     public function __construct()
     {
         $this->id = Uuid::v4()->toRfc4122();
-        $this->createdAt = new \DateTime();
+        $this->createdAt = new DateTime();
         $this->markAsUpdated();
         $this->enlaces = new ArrayCollection();
         $this->users = new ArrayCollection();
@@ -96,12 +98,12 @@ class Organization
         return $this;
     }
 
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt(): DateTime
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $createdAt): self
+    public function setCreatedAt(DateTimeImmutable $createdAt): self
     {
         $this->createdAt = $createdAt;
 
@@ -206,7 +208,7 @@ class Organization
 
     private function markAsUpdated()
     {
-        $this->updatedAt = new \DateTime();
+        $this->updatedAt = new DateTime();
     }
 
     public function getIsActive(): ?bool

@@ -15,7 +15,7 @@ class Corazon
     #[ORM\Column()]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column()]
     private ?string $name = null;
 
     #[ORM\Column(length: 150, unique: true)]
@@ -31,18 +31,18 @@ class Corazon
 
 
     #[Gedmo\Timestampable(on: 'update')]
-    #[ORM\Column(type: 'datetime')]
+    #[ORM\Column()]
     private ?DateTime $updated = null;
 
 
     #[Gedmo\Timestampable(on: 'change', field: ['promise'])]
-    #[ORM\Column(name: 'content_changed', type: 'datetime', nullable: true)]
+    #[ORM\Column(name: 'content_changed', nullable: true)]
     private ?DateTime $contentChanged = null;
 
     #[ORM\Column()]
     private ?int $meses = 1;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(nullable: true)]
     private ?string $apellido = null;
 
     public function __construct()
