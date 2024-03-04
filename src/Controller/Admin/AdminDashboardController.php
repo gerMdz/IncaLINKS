@@ -2,7 +2,6 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Corazon;
 use App\Entity\Countandadd;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -13,19 +12,15 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AdminDashboardController extends AbstractDashboardController
 {
-
     private $base_name_site;
-    private \EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator $adminUrlGenerator;
 
-    /**
-     * @param string $base_name_site
-     */
-    public function __construct(string $base_name_site, \EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator $adminUrlGenerator){
+    private AdminUrlGenerator $adminUrlGenerator;
 
+    public function __construct(string $base_name_site, AdminUrlGenerator $adminUrlGenerator)
+    {
         $this->base_name_site = $base_name_site;
         $this->adminUrlGenerator = $adminUrlGenerator;
     }
-
 
     /**
      * @Route("/admin", name="admin")
@@ -33,8 +28,8 @@ class AdminDashboardController extends AbstractDashboardController
     public function index(): Response
     {
         $routeBuilder = $this->adminUrlGenerator;
-        return $this->redirect($routeBuilder->setController(CorazonCrudController::class)->generateUrl());
 
+        return $this->redirect($routeBuilder->setController(CorazonCrudController::class)->generateUrl());
     }
 
     public function configureDashboard(): Dashboard
@@ -45,7 +40,7 @@ class AdminDashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-//        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+        //        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Corazones', 'fas fa-heart text-primary', Countandadd::class);
     }
 }

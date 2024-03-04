@@ -20,20 +20,18 @@ class EnlaceCortoRepository extends ServiceEntityRepository
         parent::__construct($registry, EnlaceCorto::class);
     }
 
-
     public function findAllEnlaces($search = null): QueryBuilder
     {
         $qb = $this->createQueryBuilder('e')
             ->orderBy('e.linkRoute', 'ASC')
         ;
-        if($search){
+        if ($search) {
             $qb->where('e.enlace LIKE :param OR e.linkRoute LIKE :param')
-                ->setParameter('param', '%' . $search . '%');
+                ->setParameter('param', '%'.$search.'%');
         }
 
         return $qb;
     }
-
 
     /*
     public function findOneBySomeField($value): ?EnlaceCorto

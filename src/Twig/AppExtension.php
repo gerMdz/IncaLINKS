@@ -25,6 +25,7 @@ use Twig\TwigFunction;
 class AppExtension extends AbstractExtension
 {
     private $localeCodes;
+
     private $locales;
 
     public function __construct(string $locales)
@@ -34,9 +35,6 @@ class AppExtension extends AbstractExtension
         $this->localeCodes = $localeCodes;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getFunctions(): array
     {
         return [

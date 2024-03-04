@@ -9,26 +9,32 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=EnlaceCortoRepository::class)
+ *
  * @ORM\Table(name="inca_enlace_corto")
  */
 class EnlaceCorto
 {
     /**
      * @ORM\Id
+     *
      * @ORM\GeneratedValue
+     *
      * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=150, unique=true, nullable=true)
+     *
      * @Gedmo\Slug(fields={"enlace"})
+     *
      * @Groups("enlace_get")
      */
     private $enlace;
 
     /**
      * @ORM\Column(type="string", length=255)
+     *
      * @Groups("enlace_get")
      */
     private $linkRoute;

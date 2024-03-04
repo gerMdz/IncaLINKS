@@ -19,11 +19,13 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
+
 use function Symfony\Component\String\u;
 
 class AppFixtures extends Fixture
 {
     private $passwordEncoder;
+
     private $slugger;
 
     public function __construct(UserPasswordEncoderInterface $passwordEncoder, SluggerInterface $slugger)

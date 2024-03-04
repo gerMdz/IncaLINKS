@@ -32,18 +32,12 @@ class PostVoter extends Voter
     public const EDIT = 'edit';
     public const SHOW = 'show';
 
-    /**
-     * {@inheritdoc}
-     */
     protected function supports($attribute, $subject): bool
     {
         // this voter is only executed for three specific permissions on Post objects
         return $subject instanceof Post && \in_array($attribute, [self::SHOW, self::EDIT, self::DELETE], true);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     protected function voteOnAttribute($attribute, $post, TokenInterface $token): bool
     {
         $user = $token->getUser();
