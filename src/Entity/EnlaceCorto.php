@@ -41,11 +41,10 @@ class EnlaceCorto
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isActive;
+    private $isActive = true;
 
     public function __construct()
     {
-        $this->isActive = true;
     }
 
     public function getId(): ?int

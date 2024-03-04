@@ -15,13 +15,15 @@ class AdminDashboardController extends AbstractDashboardController
 {
 
     private $base_name_site;
+    private \EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator $adminUrlGenerator;
 
     /**
      * @param string $base_name_site
      */
-    public function __construct(string $base_name_site){
+    public function __construct(string $base_name_site, \EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator $adminUrlGenerator){
 
         $this->base_name_site = $base_name_site;
+        $this->adminUrlGenerator = $adminUrlGenerator;
     }
 
 
@@ -30,7 +32,7 @@ class AdminDashboardController extends AbstractDashboardController
      */
     public function index(): Response
     {
-        $routeBuilder = $this->get(AdminUrlGenerator::class);
+        $routeBuilder = $this->adminUrlGenerator;
         return $this->redirect($routeBuilder->setController(CorazonCrudController::class)->generateUrl());
 
     }
