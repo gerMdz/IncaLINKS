@@ -39,7 +39,7 @@
     "hosted-git-info": "^4.1.0",
     "is-svg": "^4.3.2",
     "json-schema": "^0.4.0",
-    "lodash": "^4.17.23",
+    "lodash": "^4.18.1",
     "nth-check": "^2.0.1",
     "postcss": "^8.4.31",
     "ssri": "^8.0.1",
