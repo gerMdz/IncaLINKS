@@ -26,6 +26,10 @@ class EnlaceCortoController extends AbstractController
      */
     public function index(EnlaceCortoRepository $enlaceCortoRepository, PaginatorInterface $paginator, Request $request): Response
     {
+        if (!$this->isGranted('ROLE_USER')) {
+            return $this->render('enlace_corto/index.html.twig');
+        }
+
         $search = null;
         if ($request->query->get('search')) {
             $search = $request->query->get('search');

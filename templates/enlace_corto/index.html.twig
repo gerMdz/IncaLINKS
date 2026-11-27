@@ -4,6 +4,7 @@
 {% block title %}Enlaces Cortos Listado{% endblock %}
 
 {% block main %}
+    {% if is_granted('ROLE_USER') %}
     <h1>Listado de enlaces cortos</h1>
     <form action="{{ path(app.request.get('_route')) }}" method="get" class="d-flex">
         <input type="text" name="search" id="search" class="form-control me-2" placeholder="Buscar" aria-label="Buscar">
@@ -71,6 +72,7 @@
     {# <a href="{{ path('enlace_corto_new') }}"> #}
     {# {{ 'action.create_enlacecorto'|trans }} #}
     {# </a> #}
+    {% endif %}
 {% endblock %}
 {% block sidebar %}
     {% if (is_granted('ROLE_ADMIN')) %}
